@@ -30,9 +30,21 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        singleToneClassAns singleToneClassAns = com.example.quiz.singleToneClassAns.getInstance();
+        singleToneClassAns.setAns("no answer selected");
+
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (binding.firstAnswer.isChecked()){
+                    singleToneClassAns.setAns(binding.firstAnswer.getText().toString());
+                }
+                if (binding.SecondAnswer.isChecked()){
+                    singleToneClassAns.setAns(binding.SecondAnswer.getText().toString());
+                }
+                if (binding.ThirdAnswer.isChecked()){
+                    singleToneClassAns.setAns(binding.ThirdAnswer.getText().toString());
+                }
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_SecondFragment);
 
