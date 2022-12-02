@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Quiz</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Start Quiz</string>
+    <string name="previous">Finish</string>
+
+    <string name="hello_first_fragment">The quiz should be here</string>
+    <string name="hello_second_fragment">Wow</string>
+</resources>
