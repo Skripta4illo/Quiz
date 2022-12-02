@@ -29,7 +29,9 @@ public class SecondFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
+        singleToneClass.setData(singleToneClass.getData()+1);
+        binding.textView.setText("quiz answered " + singleToneClass.getData() + " times");
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

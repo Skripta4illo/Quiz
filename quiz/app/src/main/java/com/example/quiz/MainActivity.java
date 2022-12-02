@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
+        singleToneClass.setData(0);
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
