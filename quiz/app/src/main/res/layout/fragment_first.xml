@@ -35,19 +35,16 @@
             android:id="@+id/firstAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
             android:text="first answer" />
         <RadioButton
             android:id="@+id/SecondAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
             android:text="second answer" />
         <RadioButton
             android:id="@+id/ThirdAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
             android:text="third answer" />
     </RadioGroup>
 </android.support.constraint.ConstraintLayout>
