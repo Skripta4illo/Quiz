@@ -4,8 +4,8 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Start Quiz</string>
-    <string name="previous">Finish</string>
+    <string name="next">Vote</string>
+    <string name="previous">new Question</string>
 
     <string name="hello_first_fragment">The quiz should be here</string>
     <string name="hello_second_fragment">Wow</string>
