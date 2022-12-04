@@ -15,7 +15,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.quiz.databinding.FragmentFirstBinding;
 
 public class FirstFragment extends Fragment {
-
     private FragmentFirstBinding binding;
 
     @Override
@@ -32,9 +31,15 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        DatabaseHandler db = new DatabaseHandler(this.getContext());
+
+        int randomNum = (int) (Math.random() * db.getQuizCount()) + 1;
+
+        Quiz quiz1 = db.getQuiz(randomNum);
+        String qn = quiz1.getQuizName();
+        binding.textviewFirst.setText(qn);
 
         singleToneClassAns singleToneClassAns = com.example.quiz.singleToneClassAns.getInstance();
-        binding.textviewFirst.setText(singleToneClassAns.getAns());
         singleToneClassAns.setAns("no answer selected");
 
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {

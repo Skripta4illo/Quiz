@@ -3,6 +3,7 @@ package com.example.quiz;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // code to add the new contact
+    // code to add the new quiz
     void addQuiz(Quiz quiz) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -56,7 +57,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close(); // Closing database connection
     }
 
-    // code to get the single contact
+    // code to get the single quiz
     Quiz getQuiz(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -72,7 +73,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return quiz;
     }
 
-    // code to get all contacts in a list view
+    // code to get all quizes in a list view
     public List<Quiz> getAllQuizes() {
         List<Quiz> quizList = new ArrayList<Quiz>();
         // Select All Query
@@ -98,8 +99,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return quizList;
     }
 
-    // code to update the single contact
-    public int updateContact(Quiz quiz) {
+    // code to update the single quiz
+    public int updateQuiz(Quiz quiz) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -112,23 +113,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 new String[] { String.valueOf(quiz.getID()) });
     }
 
-    // Deleting single contact
-    public void deleteContact(Quiz quiz) {
+    // Deleting single quiz
+    public void deleteQuiz(Quiz quiz) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_QUIZES, KEY_ID + " = ?",
                 new String[] { String.valueOf(quiz.getID()) });
         db.close();
     }
 
-    // Getting contacts Count
-    public int getContactsCount() {
-        String countQuery = "SELECT  * FROM " + TABLE_QUIZES;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(countQuery, null);
-        cursor.close();
+    // Getting quiz Count
+    public long getQuizCount() {
 
-        // return count
-        return cursor.getCount();
+        SQLiteDatabase db = this.getReadableDatabase();
+        long count = DatabaseUtils.queryNumEntries(db, TABLE_QUIZES);
+        db.close();
+        return count;
     }
 
 }
