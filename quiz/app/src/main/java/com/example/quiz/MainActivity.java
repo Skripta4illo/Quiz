@@ -22,6 +22,22 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        DatabaseHandler db = new DatabaseHandler(this);
+
+        // Inserting Quizes
+        db.addQuiz(new Quiz("The first quiz", 3,  "One Answer"));
+        db.addQuiz(new Quiz("The second quiz", 4,  "Few Answers"));
+        db.addQuiz(new Quiz("The third quiz", 7,  "Try to prioritize"));
+
+        int randomNum = (int) (Math.random() * 3) + 1;
+
+        Quiz quiz1 = db.getQuiz(randomNum);
+        String qn = quiz1.getQuizName();
+
+        singleToneClassAns singleToneClassAns = com.example.quiz.singleToneClassAns.getInstance();
+        singleToneClassAns.setAns(qn);
+
         singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
         singleToneClass.setData(0);
         super.onCreate(savedInstanceState);

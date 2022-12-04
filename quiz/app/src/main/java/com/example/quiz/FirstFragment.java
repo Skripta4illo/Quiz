@@ -1,9 +1,11 @@
 package com.example.quiz;
 
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import java.util.concurrent.ThreadLocalRandom;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -30,7 +32,9 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         singleToneClassAns singleToneClassAns = com.example.quiz.singleToneClassAns.getInstance();
+        binding.textviewFirst.setText(singleToneClassAns.getAns());
         singleToneClassAns.setAns("no answer selected");
 
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
