@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/SecondFragment">
 
     <fragment
         android:id="@+id/FirstFragment"
@@ -24,5 +24,57 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_SecondFragment_to_OneQuestionFourAnswers"
+            app:destination="@id/OneAnswerFourOptions" />
+        <action
+            android:id="@+id/action_SecondFragment_to_OneQuestionFiveAnswers"
+            app:destination="@id/OneAnswerFiveOptions" />
+        <action
+            android:id="@+id/action_SecondFragment_to_OneQuestionSixAnswers"
+            app:destination="@id/OneAnswerSixOptions" />
+        <action
+            android:id="@+id/action_SecondFragment_to_OneQuestionSevenAnswers"
+            app:destination="@id/OneAnswerSevenOptions" />
+    </fragment>
+    <fragment
+        android:id="@+id/OneAnswerFourOptions"
+        android:name="com.example.quiz.OneAnswerFourOptions"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_OneAnswerFourOptions_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/OneAnswerFiveOptions"
+        android:name="com.example.quiz.OneAnswerFiveOptions"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_OneAnswerFiveOptions_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/OneAnswerSixOptions"
+        android:name="com.example.quiz.OneAnswerSixOptions"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_OneAnswerSixOptions_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/OneAnswerSevenOptions"
+        android:name="com.example.quiz.OneAnswerSevenOptions"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_OneAnswerSevenOptions_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
     </fragment>
 </navigation>
