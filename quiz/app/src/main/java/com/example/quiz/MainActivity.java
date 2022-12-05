@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        singleToneClassAns singleToneClassAns = com.example.quiz.singleToneClassAns.getInstance();
+        singleToneClassAns.setAns("Welcome!");
+
         DatabaseHandler db = new DatabaseHandler(this);
 
         //deleting all existing quiz
@@ -35,10 +38,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Inserting Quizes
-        db.addQuiz(new Quiz(1,"What is my name?", 3,  "One Answer"));
-        db.addQuiz(new Quiz(2,"What is my favorite dish?", 3,  "One Answer"));
-        db.addQuiz(new Quiz(3,"Who is my beloved wife?", 3,  "One Answer"));
-
+        db.addQuiz(new Quiz(1,"What is creator name?", 3,  "One Answer"));
+        db.addQuiz(new Quiz(2,"What is creator favorite dish?", 3,  "One Answer"));
+        db.addQuiz(new Quiz(3,"Who is creator beloved wife?", 3,  "One Answer"));
+        db.addQuiz(new Quiz(4, "Where is the ocean?", 4,  "One Answer"));
+        db.addQuiz(new Quiz(5, "The largest continent", 5,  "One Answer"));
+        db.addQuiz(new Quiz(5, "Who will come for the new year?", 6,  "One Answer"));
+        db.addQuiz(new Quiz(5, "The largest island", 7,  "One Answer"));
         //db.addQuiz(new Quiz("The second quiz", 4,  "Few Answers"));
         //db.addQuiz(new Quiz("The third quiz", 7,  "Try to prioritize"));
 
@@ -63,8 +69,32 @@ public class MainActivity extends AppCompatActivity {
         dbq.addQuestion(new Question(8,3,"Sherry",0));
         dbq.addQuestion(new Question(9,3,"Liudmila",1));
 
-        singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
-        singleToneClass.setData(0); //for counter
+        dbq.addQuestion(new Question(10,4,"East",1));
+        dbq.addQuestion(new Question(11,4,"West",0));
+        dbq.addQuestion(new Question(12,4,"North",0));
+        dbq.addQuestion(new Question(13,4,"South",0));
+
+        dbq.addQuestion(new Question(14,5,"Europe",0));
+        dbq.addQuestion(new Question(15,5,"Asia",1));
+        dbq.addQuestion(new Question(16,5,"South America",0));
+        dbq.addQuestion(new Question(17,5,"North America",0));
+        dbq.addQuestion(new Question(18,5,"Australia",0));
+
+        dbq.addQuestion(new Question(19,6,"Satana",0));
+        dbq.addQuestion(new Question(20,6,"Putin",0));
+        dbq.addQuestion(new Question(21,6,"Ded Moroz",0));
+        dbq.addQuestion(new Question(22,6,"St. Claus",1));
+        dbq.addQuestion(new Question(23,6,"Uncle Benz",0));
+        dbq.addQuestion(new Question(24,6,"Mario",0));
+
+        dbq.addQuestion(new Question(25,7,"Negros",0));
+        dbq.addQuestion(new Question(26,7,"Crete",0));
+        dbq.addQuestion(new Question(27,7,"Madagascar",0));
+        dbq.addQuestion(new Question(28,7,"Zelenen'kiy",0));
+        dbq.addQuestion(new Question(29,7,"Phangan",0));
+        dbq.addQuestion(new Question(30,7,"Grenlandia",0));
+        dbq.addQuestion(new Question(31,7,"Australia",1));
+
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());

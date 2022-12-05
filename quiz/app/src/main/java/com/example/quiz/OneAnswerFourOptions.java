@@ -1,31 +1,30 @@
 package com.example.quiz;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.quiz.databinding.FragmentFirstBinding;
-//this code is for one answer from 3 options
+//import com.example.quiz.databinding.FragmentFirstBinding;
+import com.example.quiz.databinding.OneAnswerFourOptionBinding;
 
-public class FirstFragment extends Fragment {
-    private FragmentFirstBinding binding;
+import java.util.List;
+
+//this code is for one answer from 4 options
+public class OneAnswerFourOptions extends Fragment {
+    private OneAnswerFourOptionBinding binding;
 
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        binding = FragmentFirstBinding.inflate(inflater, container, false);
+
+        binding = OneAnswerFourOptionBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -51,10 +50,12 @@ public class FirstFragment extends Fragment {
         Question ques1 = queForFrag.get(0);
         Question ques2 = queForFrag.get(1);
         Question ques3 = queForFrag.get(2);
+        Question ques4 = queForFrag.get(3);
 
         binding.firstAnswer.setText(ques1.getQuestionName());
         binding.SecondAnswer.setText(ques2.getQuestionName());
         binding.ThirdAnswer.setText(ques3.getQuestionName());
+        binding.fourthAnswer.setText(ques4.getQuestionName());
 
         singleToneClassAns singleToneClassAns = com.example.quiz.singleToneClassAns.getInstance();
         singleToneClassAns.setAns("no answer selected");
@@ -82,8 +83,15 @@ public class FirstFragment extends Fragment {
                     else
                         singleToneClassAns.setAns(binding.ThirdAnswer.getText().toString() + wa);
                 }
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                //four answer
+                if (binding.fourthAnswer.isChecked()){
+                    if (ques4.getQuestionRight() == 1)
+                        singleToneClassAns.setAns(binding.fourthAnswer.getText().toString() + ra);
+                    else
+                        singleToneClassAns.setAns(binding.fourthAnswer.getText().toString() + wa);
+                }
+                NavHostFragment.findNavController(OneAnswerFourOptions.this)
+                        .navigate(R.id.action_OneAnswerFourOptions_to_SecondFragment);
 
             }
         });

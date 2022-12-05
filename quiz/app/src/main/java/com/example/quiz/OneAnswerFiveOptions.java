@@ -1,31 +1,30 @@
 package com.example.quiz;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.quiz.databinding.FragmentFirstBinding;
-//this code is for one answer from 3 options
+import com.example.quiz.databinding.OneAnswerFiveOptionBinding;
+import com.example.quiz.databinding.OneAnswerFourOptionBinding;
 
-public class FirstFragment extends Fragment {
-    private FragmentFirstBinding binding;
+import java.util.List;
+
+//this code is for one answer from 5 options
+public class OneAnswerFiveOptions extends Fragment {
+    private OneAnswerFiveOptionBinding binding;
 
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        binding = FragmentFirstBinding.inflate(inflater, container, false);
+
+        binding = OneAnswerFiveOptionBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -39,8 +38,6 @@ public class FirstFragment extends Fragment {
         singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
         int quiz_id = singleToneClass.getData();
 
-        //int randomNum = (int) (Math.random() * db.getQuizCount()) + 1;
-
         Quiz quiz1 = db.getQuiz(quiz_id);
         String qn = quiz1.getQuizName();
         binding.textviewFirst.setText(qn);
@@ -51,10 +48,14 @@ public class FirstFragment extends Fragment {
         Question ques1 = queForFrag.get(0);
         Question ques2 = queForFrag.get(1);
         Question ques3 = queForFrag.get(2);
+        Question ques4 = queForFrag.get(3);
+        Question ques5 = queForFrag.get(4);
 
         binding.firstAnswer.setText(ques1.getQuestionName());
         binding.SecondAnswer.setText(ques2.getQuestionName());
         binding.ThirdAnswer.setText(ques3.getQuestionName());
+        binding.fourthAnswer.setText(ques4.getQuestionName());
+        binding.fifthAnswer.setText(ques5.getQuestionName());
 
         singleToneClassAns singleToneClassAns = com.example.quiz.singleToneClassAns.getInstance();
         singleToneClassAns.setAns("no answer selected");
@@ -82,8 +83,22 @@ public class FirstFragment extends Fragment {
                     else
                         singleToneClassAns.setAns(binding.ThirdAnswer.getText().toString() + wa);
                 }
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                //four answer
+                if (binding.fourthAnswer.isChecked()){
+                    if (ques4.getQuestionRight() == 1)
+                        singleToneClassAns.setAns(binding.fourthAnswer.getText().toString() + ra);
+                    else
+                        singleToneClassAns.setAns(binding.fourthAnswer.getText().toString() + wa);
+                }
+                //fifth answer
+                if (binding.fifthAnswer.isChecked()){
+                    if (ques5.getQuestionRight() == 1)
+                        singleToneClassAns.setAns(binding.fifthAnswer.getText().toString() + ra);
+                    else
+                        singleToneClassAns.setAns(binding.fifthAnswer.getText().toString() + wa);
+                }
+                NavHostFragment.findNavController(OneAnswerFiveOptions.this)
+                        .navigate(R.id.action_OneAnswerFiveOptions_to_SecondFragment);
 
             }
         });
