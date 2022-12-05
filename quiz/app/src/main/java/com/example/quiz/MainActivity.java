@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         db.addQuiz(new Quiz(3,"Who is creator beloved wife?", 3,  "One Answer"));
         db.addQuiz(new Quiz(4, "Where is the ocean?", 4,  "One Answer"));
         db.addQuiz(new Quiz(5, "The largest continent", 5,  "One Answer"));
-        db.addQuiz(new Quiz(5, "Who will come for the new year?", 6,  "One Answer"));
-        db.addQuiz(new Quiz(5, "The largest island", 7,  "One Answer"));
+        db.addQuiz(new Quiz(6, "Who will come for the new year?", 6,  "One Answer"));
+        db.addQuiz(new Quiz(7, "The largest island", 7,  "One Answer"));
         //db.addQuiz(new Quiz("The second quiz", 4,  "Few Answers"));
         //db.addQuiz(new Quiz("The third quiz", 7,  "Try to prioritize"));
 
