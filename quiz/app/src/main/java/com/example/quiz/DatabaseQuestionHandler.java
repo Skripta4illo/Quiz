@@ -143,7 +143,7 @@ public class DatabaseQuestionHandler extends SQLiteOpenHelper {
     }
 
     // Deleting single question
-    public void deleteQuiz(Question question) {
+    public void deleteQuestion(Question question) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_QUESTIONS, KEY_ID + " = ?",
                 new String[] { String.valueOf(question.getIDa()) });

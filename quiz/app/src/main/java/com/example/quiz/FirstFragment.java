@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import android.support.annotation.NonNull;
@@ -39,20 +41,42 @@ public class FirstFragment extends Fragment {
         String qn = quiz1.getQuizName();
         binding.textviewFirst.setText(qn);
 
+        DatabaseQuestionHandler dbq = new DatabaseQuestionHandler(this.getContext());
+        List<Question> queForFrag = dbq.getAllQuestionInQuiz(randomNum);
+
+        Question ques1 = queForFrag.get(0);
+        Question ques2 = queForFrag.get(1);
+        Question ques3 = queForFrag.get(2);
+
+        binding.firstAnswer.setText(ques1.getQuestionName());
+        binding.SecondAnswer.setText(ques2.getQuestionName());
+        binding.ThirdAnswer.setText(ques3.getQuestionName());
+
         singleToneClassAns singleToneClassAns = com.example.quiz.singleToneClassAns.getInstance();
         singleToneClassAns.setAns("no answer selected");
 
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String ra = " - This is the correct answer!";
+                String wa = " - This is incorrect answer!";
                 if (binding.firstAnswer.isChecked()){
-                    singleToneClassAns.setAns(binding.firstAnswer.getText().toString());
+                    if (ques1.getQuestionRight() == 1)
+                    singleToneClassAns.setAns(binding.firstAnswer.getText().toString() + ra);
+                            else
+                        singleToneClassAns.setAns(binding.firstAnswer.getText().toString() + wa);;
                 }
                 if (binding.SecondAnswer.isChecked()){
-                    singleToneClassAns.setAns(binding.SecondAnswer.getText().toString());
+                    if (ques2.getQuestionRight() == 1)
+                    singleToneClassAns.setAns(binding.SecondAnswer.getText().toString() + ra);
+                    else
+                        singleToneClassAns.setAns(binding.SecondAnswer.getText().toString() + wa);
                 }
                 if (binding.ThirdAnswer.isChecked()){
-                    singleToneClassAns.setAns(binding.ThirdAnswer.getText().toString());
+                    if (ques3.getQuestionRight() == 1)
+                    singleToneClassAns.setAns(binding.ThirdAnswer.getText().toString() + ra);
+                    else
+                        singleToneClassAns.setAns(binding.ThirdAnswer.getText().toString() + wa);
                 }
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_SecondFragment);

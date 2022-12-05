@@ -15,6 +15,8 @@ import com.example.quiz.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
@@ -25,13 +27,44 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseHandler db = new DatabaseHandler(this);
 
+        //deleting all existing quiz
+        List<Quiz> allQuiz = db.getAllQuizes();
+        for (Quiz dq : allQuiz)
+        {
+            db.deleteQuiz(dq);
+        }
+
         // Inserting Quizes
-        db.addQuiz(new Quiz("The first quiz", 3,  "One Answer"));
-        db.addQuiz(new Quiz("The second quiz", 4,  "Few Answers"));
-        db.addQuiz(new Quiz("The third quiz", 7,  "Try to prioritize"));
+        db.addQuiz(new Quiz(1,"What is my name?", 3,  "One Answer"));
+        db.addQuiz(new Quiz(2,"What is my favorite dish?", 3,  "One Answer"));
+        db.addQuiz(new Quiz(3,"Who is my beloved wife?", 3,  "One Answer"));
+
+        //db.addQuiz(new Quiz("The second quiz", 4,  "Few Answers"));
+        //db.addQuiz(new Quiz("The third quiz", 7,  "Try to prioritize"));
+
+        DatabaseQuestionHandler dbq = new DatabaseQuestionHandler(this);
+
+        //deleting all existing quiz
+        List<Question> allQuestion = dbq.getAllQuestion();
+        for (Question dqs : allQuestion)
+        {
+            dbq.deleteQuestion(dqs);
+        }
+        // Inserting Question
+        dbq.addQuestion(new Question(1,1,"Iurii",0));
+        dbq.addQuestion(new Question(2,1,"Ivan",1));
+        dbq.addQuestion(new Question(3,1,"Alexey",0));
+
+        dbq.addQuestion(new Question(4,2,"Mimosa",1));
+        dbq.addQuestion(new Question(5,2,"Herring under a fur coat",0));
+        dbq.addQuestion(new Question(6,2,"Olivier",0));
+
+        dbq.addQuestion(new Question(7,3,"Abel",0));
+        dbq.addQuestion(new Question(8,3,"Sherry",0));
+        dbq.addQuestion(new Question(9,3,"Liudmila",1));
 
         singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
-        singleToneClass.setData(0);
+        singleToneClass.setData(0); //for counter
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
