@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_SecondFragment_to_OneQuestionSevenAnswers"
             app:destination="@id/OneAnswerSevenOptions" />
+        <action
+            android:id="@+id/action_SecondFragment_to_FewAnswersFourOptions"
+            app:destination="@id/FewAnswersFourOptions" />
     </fragment>
     <fragment
         android:id="@+id/OneAnswerFourOptions"
@@ -75,6 +78,16 @@
 
         <action
             android:id="@+id/action_OneAnswerSevenOptions_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/FewAnswersFourOptions"
+        android:name="com.example.quiz.FewAnswersFourOptions"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_FewAnswersFourOptions_to_SecondFragment"
             app:destination="@id/SecondFragment" />
     </fragment>
 </navigation>
