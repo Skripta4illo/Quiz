@@ -69,7 +69,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         Quiz quiz = new Quiz(Integer.parseInt(cursor.getString(0)),
                 cursor.getString(1), cursor.getInt(2), cursor.getString(3));
-        // return contact
+        // return quiz
         return quiz;
     }
 
@@ -95,7 +95,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
 
-        // return contact list
+        // return quiz list
         return quizList;
     }
 
