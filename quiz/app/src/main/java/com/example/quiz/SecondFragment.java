@@ -41,6 +41,7 @@ public class SecondFragment extends Fragment {
             public void onClick(View view) {
                 //get quiz id
                 int randomNum = (int) (Math.random() * db.getQuizCount()) + 1;
+                //randomNum = 8; //test string
 
                 //set quiz id to global variable
                 singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
@@ -52,21 +53,32 @@ public class SecondFragment extends Fragment {
                 //get quiz answer count
                 int ac = quiz1.getAnsCount();
 
-                if (ac == 3)
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-                if (ac == 4)
-                    NavHostFragment.findNavController(SecondFragment.this)
-                            .navigate(R.id.action_SecondFragment_to_OneQuestionFourAnswers);
-                if (ac == 5)
-                    NavHostFragment.findNavController(SecondFragment.this)
-                            .navigate(R.id.action_SecondFragment_to_OneQuestionFiveAnswers);
-                if (ac == 6)
-                    NavHostFragment.findNavController(SecondFragment.this)
-                            .navigate(R.id.action_SecondFragment_to_OneQuestionSixAnswers);
-                if (ac == 7)
-                    NavHostFragment.findNavController(SecondFragment.this)
-                            .navigate(R.id.action_SecondFragment_to_OneQuestionSevenAnswers);
+                //get quiz type
+                String qt = quiz1.getQuizType();
+
+                if (qt.equals("One Answer")) {
+                    if (ac == 3)
+                        NavHostFragment.findNavController(SecondFragment.this)
+                                .navigate(R.id.action_SecondFragment_to_FirstFragment);
+                    if (ac == 4)
+                        NavHostFragment.findNavController(SecondFragment.this)
+                                .navigate(R.id.action_SecondFragment_to_OneQuestionFourAnswers);
+                    if (ac == 5)
+                        NavHostFragment.findNavController(SecondFragment.this)
+                                .navigate(R.id.action_SecondFragment_to_OneQuestionFiveAnswers);
+                    if (ac == 6)
+                        NavHostFragment.findNavController(SecondFragment.this)
+                                .navigate(R.id.action_SecondFragment_to_OneQuestionSixAnswers);
+                    if (ac == 7)
+                        NavHostFragment.findNavController(SecondFragment.this)
+                                .navigate(R.id.action_SecondFragment_to_OneQuestionSevenAnswers);
+                }
+                if (qt.equals("Few Answers")){
+                    if (ac == 4)
+                        NavHostFragment.findNavController(SecondFragment.this)
+                                .navigate(R.id.action_SecondFragment_to_FewAnswersFourOptions);
+
+                }
             }
         });
     }

@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         db.addQuiz(new Quiz(5, "The largest continent", 5,  "One Answer"));
         db.addQuiz(new Quiz(6, "Who will come for the new year?", 6,  "One Answer"));
         db.addQuiz(new Quiz(7, "The largest island", 7,  "One Answer"));
-        //db.addQuiz(new Quiz("The second quiz", 4,  "Few Answers"));
+        db.addQuiz(new Quiz(8,"Choose all correct statements", 4,  "Few Answers"));
         //db.addQuiz(new Quiz("The third quiz", 7,  "Try to prioritize"));
 
         DatabaseQuestionHandler dbq = new DatabaseQuestionHandler(this);
@@ -94,6 +94,11 @@ public class MainActivity extends AppCompatActivity {
         dbq.addQuestion(new Question(29,7,"Phangan",0));
         dbq.addQuestion(new Question(30,7,"Grenlandia",0));
         dbq.addQuestion(new Question(31,7,"Australia",1));
+
+        dbq.addQuestion(new Question(32,8,"Putin is devil",0));
+        dbq.addQuestion(new Question(33,8,"There are very hot in Africa",1));
+        dbq.addQuestion(new Question(34,8,"SOLID id possible",1));
+        dbq.addQuestion(new Question(35,8,"People are immortal",0));
 
         super.onCreate(savedInstanceState);
 
