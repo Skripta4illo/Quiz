@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FewAnswersSixOptions">
+
+    <TextView
+        android:id="@+id/textview_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_first_fragment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_first" />
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/textview_first">
+
+        <CheckBox
+            android:id="@+id/firstAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="first answer" />
+
+        <CheckBox
+            android:id="@+id/SecondAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="second answer" />
+
+        <CheckBox
+            android:id="@+id/ThirdAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="third answer" />
+
+        <CheckBox
+            android:id="@+id/fourthAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="fourth answer" />
+
+        <CheckBox
+            android:id="@+id/fifthAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="fifth answer" />
+
+        <CheckBox
+            android:id="@+id/sixthAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="sixth answer" />
+    </RadioGroup>
+</android.support.constraint.ConstraintLayout>
