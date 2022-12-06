@@ -39,6 +39,15 @@
         <action
             android:id="@+id/action_SecondFragment_to_FewAnswersFourOptions"
             app:destination="@id/FewAnswersFourOptions" />
+        <action
+            android:id="@+id/action_SecondFragment_to_FewAnswersFiveOptions"
+            app:destination="@id/FewAnswersFiveOptions" />
+        <action
+            android:id="@+id/action_SecondFragment_to_FewAnswersSixOptions"
+            app:destination="@id/FewAnswersSixOptions" />
+        <action
+            android:id="@+id/action_SecondFragment_to_FewAnswersSevenOptions"
+            app:destination="@id/FewAnswersSevenOptions" />
     </fragment>
     <fragment
         android:id="@+id/OneAnswerFourOptions"
@@ -88,6 +97,36 @@
 
         <action
             android:id="@+id/action_FewAnswersFourOptions_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/FewAnswersFiveOptions"
+        android:name="com.example.quiz.FewAnswersFiveOptions"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_FewAnswersFiveOptions_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/FewAnswersSixOptions"
+        android:name="com.example.quiz.FewAnswersSixOptions"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_FewAnswersSixOptions_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/FewAnswersSevenOptions"
+        android:name="com.example.quiz.FewAnswersSevenOptions"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_FewAnswersSevenOptions_to_SecondFragment"
             app:destination="@id/SecondFragment" />
     </fragment>
 </navigation>
