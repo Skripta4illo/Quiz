@@ -1,13 +1,11 @@
 package com.example.quiz;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -38,8 +36,6 @@ public class FirstFragment extends Fragment {
         //get quiz id from global variable
         singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
         int quiz_id = singleToneClass.getData();
-
-        //int randomNum = (int) (Math.random() * db.getQuizCount()) + 1;
 
         Quiz quiz1 = db.getQuiz(quiz_id);
         String qn = quiz1.getQuizName();

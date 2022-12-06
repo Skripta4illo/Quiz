@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 
 import androidx.navigation.fragment.NavHostFragment;
 
-//import com.example.quiz.databinding.FragmentFirstBinding;
 import com.example.quiz.databinding.OneAnswerFourOptionBinding;
 
 import java.util.List;

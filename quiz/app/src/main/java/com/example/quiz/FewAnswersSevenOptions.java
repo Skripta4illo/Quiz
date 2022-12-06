@@ -9,14 +9,13 @@ import android.view.ViewGroup;
 
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.quiz.databinding.FewAnswersFourOptionBinding;
-import com.example.quiz.databinding.OneAnswerFourOptionBinding;
+import com.example.quiz.databinding.FewAnswersSevenOptionBinding;
 
 import java.util.List;
 
-//this code is for few answer from 4 options
-public class FewAnswersFourOptions extends Fragment {
-    private FewAnswersFourOptionBinding binding;
+//this code is for few answers from 7 options
+public class FewAnswersSevenOptions extends Fragment {
+    private FewAnswersSevenOptionBinding binding;
 
     @Override
     public View onCreateView(
@@ -24,7 +23,7 @@ public class FewAnswersFourOptions extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FewAnswersFourOptionBinding.inflate(inflater, container, false);
+        binding = FewAnswersSevenOptionBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -38,8 +37,6 @@ public class FewAnswersFourOptions extends Fragment {
         singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
         int quiz_id = singleToneClass.getData();
 
-        //int randomNum = (int) (Math.random() * db.getQuizCount()) + 1;
-
         Quiz quiz1 = db.getQuiz(quiz_id);
         String qn = quiz1.getQuizName();
         binding.textviewFirst.setText(qn);
@@ -51,11 +48,17 @@ public class FewAnswersFourOptions extends Fragment {
         Question ques2 = queForFrag.get(1);
         Question ques3 = queForFrag.get(2);
         Question ques4 = queForFrag.get(3);
+        Question ques5 = queForFrag.get(4);
+        Question ques6 = queForFrag.get(5);
+        Question ques7 = queForFrag.get(6);
 
         binding.firstAnswer.setText(ques1.getQuestionName());
         binding.SecondAnswer.setText(ques2.getQuestionName());
         binding.ThirdAnswer.setText(ques3.getQuestionName());
         binding.fourthAnswer.setText(ques4.getQuestionName());
+        binding.fifthAnswer.setText(ques5.getQuestionName());
+        binding.sixthAnswer.setText(ques6.getQuestionName());
+        binding.seventhAnswer.setText(ques7.getQuestionName());
 
         singleToneClassAns singleToneClassAns = com.example.quiz.singleToneClassAns.getInstance();
         singleToneClassAns.setAns("no answer selected");
@@ -69,13 +72,16 @@ public class FewAnswersFourOptions extends Fragment {
                 if ((binding.firstAnswer.isChecked() ^ ques1.getQuestionRight() == 0) &&
                         (binding.SecondAnswer.isChecked() ^ ques2.getQuestionRight() == 0) &&
                         (binding.ThirdAnswer.isChecked() ^ ques3.getQuestionRight() == 0) &&
-                        (binding.fourthAnswer.isChecked() ^ ques4.getQuestionRight() == 0))
+                        (binding.fourthAnswer.isChecked() ^ ques4.getQuestionRight() == 0) &&
+                        (binding.fifthAnswer.isChecked() ^ ques5.getQuestionRight() == 0) &&
+                        (binding.sixthAnswer.isChecked() ^ ques6.getQuestionRight() == 0) &&
+                        (binding.seventhAnswer.isChecked() ^ ques7.getQuestionRight() == 0))
                         singleToneClassAns.setAns(ra);
                     else
                         singleToneClassAns.setAns(wa);
 
-                NavHostFragment.findNavController(FewAnswersFourOptions.this)
-                        .navigate(R.id.action_FewAnswersFourOptions_to_SecondFragment);
+                NavHostFragment.findNavController(FewAnswersSevenOptions.this)
+                        .navigate(R.id.action_FewAnswersSevenOptions_to_SecondFragment);
 
             }
         });

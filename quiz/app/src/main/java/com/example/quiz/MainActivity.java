@@ -46,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
         db.addQuiz(new Quiz(6, "Who will come for the new year?", 6,  "One Answer"));
         db.addQuiz(new Quiz(7, "The largest island", 7,  "One Answer"));
         db.addQuiz(new Quiz(8,"Choose all correct statements", 4,  "Few Answers"));
+        db.addQuiz(new Quiz(9,"Choose all correct statements 5", 5,  "Few Answers"));
+        db.addQuiz(new Quiz(10,"Choose all correct statements 6", 6,  "Few Answers"));
+        db.addQuiz(new Quiz(11,"Choose all correct statements 7", 7,  "Few Answers"));
         //db.addQuiz(new Quiz("The third quiz", 7,  "Try to prioritize"));
 
         DatabaseQuestionHandler dbq = new DatabaseQuestionHandler(this);
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         {
             dbq.deleteQuestion(dqs);
         }
+
         // Inserting Question
         dbq.addQuestion(new Question(1,1,"Iurii",0));
         dbq.addQuestion(new Question(2,1,"Ivan",1));
@@ -99,6 +103,27 @@ public class MainActivity extends AppCompatActivity {
         dbq.addQuestion(new Question(33,8,"There are very hot in Africa",1));
         dbq.addQuestion(new Question(34,8,"SOLID id possible",1));
         dbq.addQuestion(new Question(35,8,"People are immortal",0));
+
+        dbq.addQuestion(new Question(36,9,"Expression is true",0));
+        dbq.addQuestion(new Question(37,9,"Afternoon is 0pm",0));
+        dbq.addQuestion(new Question(38,9,"Nothing matters",0));
+        dbq.addQuestion(new Question(39,9,"Earth is an ellipsoid",1));
+        dbq.addQuestion(new Question(40,9,"Gravity is a force of mutual attraction between two objects that both have mass or energy",1));
+
+        dbq.addQuestion(new Question(41,10,"Safety first",1));
+        dbq.addQuestion(new Question(42,10,"No money no honey",0));
+        dbq.addQuestion(new Question(43,10,"All you need is love",0));
+        dbq.addQuestion(new Question(44,10,"Whale sharks are safe",1));
+        dbq.addQuestion(new Question(45,10,"Mars is located beyond the asteroid belt",0));
+        dbq.addQuestion(new Question(46,10,"In the heat, you need to drink a lot",1));
+
+        dbq.addQuestion(new Question(47,11,"English is the most popular in the world",0));
+        dbq.addQuestion(new Question(48,11,"We don't know anything about the wars in South America",1));
+        dbq.addQuestion(new Question(49,11,"Venezuela is a very poor country",1));
+        dbq.addQuestion(new Question(50,11,"In Brazil, many people are engaged in capoeira",1));
+        dbq.addQuestion(new Question(51,11,"Soap operas are mostly from Latin America",0));
+        dbq.addQuestion(new Question(52,11,"Argentina is a federal constitutional republic and representative democracy",1));
+        dbq.addQuestion(new Question(53,11,"10% of the world's population lives in the Southern Hemisphere",1));
 
         super.onCreate(savedInstanceState);
 
