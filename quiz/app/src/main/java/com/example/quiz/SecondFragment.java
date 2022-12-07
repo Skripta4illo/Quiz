@@ -33,15 +33,12 @@ public class SecondFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         singleToneClassAns singleToneClassAns = com.example.quiz.singleToneClassAns.getInstance();
         binding.textviewSecond.setText(singleToneClassAns.getAns());
-        //singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
-        //singleToneClass.setData(singleToneClass.getData()+1);
-        //binding.textView.setText("quiz answered " + singleToneClass.getData() + " times");
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //get quiz id
                 int randomNum = (int) (Math.random() * db.getQuizCount()) + 1;
-                randomNum = 11; //test string
+                randomNum = 12; //test string
 
                 //set quiz id to global variable
                 singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
@@ -86,6 +83,10 @@ public class SecondFragment extends Fragment {
                     if (ac == 7)
                         NavHostFragment.findNavController(SecondFragment.this)
                                 .navigate(R.id.action_SecondFragment_to_FewAnswersSevenOptions);
+                }
+                if (qt.equals("Prioritize")){
+                    NavHostFragment.findNavController(SecondFragment.this)
+                            .navigate(R.id.action_SecondFragment_to_PrioritizeFour);
                 }
             }
         });

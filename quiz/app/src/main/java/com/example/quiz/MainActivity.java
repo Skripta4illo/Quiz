@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         db.addQuiz(new Quiz(9,"Choose all correct statements 5", 5,  "Few Answers"));
         db.addQuiz(new Quiz(10,"Choose all correct statements 6", 6,  "Few Answers"));
         db.addQuiz(new Quiz(11,"Choose all correct statements 7", 7,  "Few Answers"));
-        //db.addQuiz(new Quiz("The third quiz", 7,  "Try to prioritize"));
+        db.addQuiz(new Quiz(12, "Prioritize words", 4,  "Prioritize"));
 
         DatabaseQuestionHandler dbq = new DatabaseQuestionHandler(this);
 
@@ -124,6 +124,11 @@ public class MainActivity extends AppCompatActivity {
         dbq.addQuestion(new Question(51,11,"Soap operas are mostly from Latin America",0));
         dbq.addQuestion(new Question(52,11,"Argentina is a federal constitutional republic and representative democracy",1));
         dbq.addQuestion(new Question(53,11,"10% of the world's population lives in the Southern Hemisphere",1));
+
+        dbq.addQuestion(new Question(54,12,"name",2));
+        dbq.addQuestion(new Question(55,12,"Ivan",4));
+        dbq.addQuestion(new Question(56,12,"My",1));
+        dbq.addQuestion(new Question(57,12,"is",3));
 
         super.onCreate(savedInstanceState);
 

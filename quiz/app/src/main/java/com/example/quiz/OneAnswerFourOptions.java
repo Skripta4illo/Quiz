@@ -37,8 +37,6 @@ public class OneAnswerFourOptions extends Fragment {
         singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
         int quiz_id = singleToneClass.getData();
 
-        //int randomNum = (int) (Math.random() * db.getQuizCount()) + 1;
-
         Quiz quiz1 = db.getQuiz(quiz_id);
         String qn = quiz1.getQuizName();
         binding.textviewFirst.setText(qn);
