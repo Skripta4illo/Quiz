@@ -80,68 +80,55 @@ public class PrioritizeFour extends Fragment {
         //setup touch listener
         textView4.setOnTouchListener(new CustomTouchListener());
 
-        // getScreenSize() returns the size
-        // of the screen in pixels
-        //Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
-
-        // width will store the width of the screen
-        //int width = (int)size.getWidth();
-
-        int width = 600;
-        int height = 800;
-
-        int randomNumX1 = (int) (Math.random() * width) + 1;
-        int randomNumY1 = (int) (Math.random() * height - 200) + 201;
-
-        RelativeLayout.LayoutParams layoutParams1 = (RelativeLayout.LayoutParams) this.textView1.getLayoutParams();
-        layoutParams1.width = 150;
-        layoutParams1.height = 100;
-        layoutParams1.leftMargin = randomNumX1 - xDelta;
-        layoutParams1.topMargin = randomNumY1 - yDelta;
-        layoutParams1.rightMargin = 0;
-        layoutParams1.bottomMargin = 0;
-        textView1.setLayoutParams(layoutParams1);
-
-        int randomNumX2 = (int) (Math.random() * width) + 1;
-        int randomNumY2 = (int) (Math.random() * height - 200) + 201;
-
-        RelativeLayout.LayoutParams layoutParams2 = (RelativeLayout.LayoutParams) this.textView2.getLayoutParams();
-        layoutParams2.width = 150;
-        layoutParams2.height = 100;
-        layoutParams2.leftMargin = randomNumX2 - xDelta;
-        layoutParams2.topMargin = randomNumY2 - yDelta;
-        layoutParams2.rightMargin = 0;
-        layoutParams2.bottomMargin = 0;
-        textView2.setLayoutParams(layoutParams2);
-
-
-        int randomNumX3 = (int) (Math.random() * width) + 1;
-        int randomNumY3 = (int) (Math.random() * height - 200) + 201;
-
-        RelativeLayout.LayoutParams layoutParams3 = (RelativeLayout.LayoutParams) this.textView3.getLayoutParams();
-        layoutParams3.width = 150;
-        layoutParams3.height = 100;
-        layoutParams3.leftMargin = randomNumX3 - xDelta;
-        layoutParams3.topMargin = randomNumY3 - yDelta;
-        layoutParams3.rightMargin = 0;
-        layoutParams3.bottomMargin = 0;
-        textView3.setLayoutParams(layoutParams3);
-
-        int randomNumX4 = (int) (Math.random() * width) + 1;
-        int randomNumY4 = (int) (Math.random() * height - 200) + 201;
-
-        RelativeLayout.LayoutParams layoutParams4 = (RelativeLayout.LayoutParams) this.textView4.getLayoutParams();
-        layoutParams4.width = 150;
-        layoutParams4.height = 100;
-        layoutParams4.leftMargin = randomNumX4 - xDelta;
-        layoutParams4.topMargin = randomNumY4 - yDelta;
-        layoutParams4.rightMargin = 0;
-        layoutParams4.bottomMargin = 0;
-        textView4.setLayoutParams(layoutParams4);
-
+        RndmLoc(textView1, 600,600,150,100,200);
+        RndmLoc(textView2, 600,600,150,100,200);
+        RndmLoc(textView3, 600,600,150,100,200);
+        RndmLoc(textView4, 600,600,150,100,200);
         return binding.getRoot();
     }
 
+    private void RndmLoc(View v, int scrWidth, int scrHeight, int lpWidth, int lpHeight, int pad) {
+
+        int randomNumX1 = (int) (Math.random() * scrWidth) + 1;
+        int randomNumY1 = (int) (Math.random() * scrHeight) + 1;
+
+        RelativeLayout.LayoutParams layoutParams1 = (RelativeLayout.LayoutParams) v.getLayoutParams();
+        layoutParams1.width = lpWidth;
+        layoutParams1.height = lpHeight;
+        layoutParams1.leftMargin = randomNumX1 - xDelta;
+        layoutParams1.topMargin = randomNumY1 - yDelta + pad;
+        layoutParams1.rightMargin = 0;
+        layoutParams1.bottomMargin = 0;
+        v.setLayoutParams(layoutParams1);
+    }
+
+    private void MoveLoc(int a){
+        if (ans1 > a) {
+            ans1--;
+            RelativeLayout.LayoutParams tv1lp = (RelativeLayout.LayoutParams) textView1.getLayoutParams();
+            tv1lp.leftMargin = tv1lp.leftMargin - 170;
+            textView1.setLayoutParams(tv1lp);
+        }
+        if (ans2 > a) {
+            ans2--;
+            RelativeLayout.LayoutParams tv2lp = (RelativeLayout.LayoutParams) textView2.getLayoutParams();
+            tv2lp.leftMargin = tv2lp.leftMargin - 170;
+            textView2.setLayoutParams(tv2lp);
+        }
+        if (ans3 > a) {
+            ans3--;
+            RelativeLayout.LayoutParams tv3lp = (RelativeLayout.LayoutParams) textView3.getLayoutParams();
+            tv3lp.leftMargin = tv3lp.leftMargin - 170;
+            textView3.setLayoutParams(tv3lp);
+        }
+        if (ans4 > a) {
+            ans4--;
+            RelativeLayout.LayoutParams tv4lp = (RelativeLayout.LayoutParams) textView4.getLayoutParams();
+            tv4lp.leftMargin = tv4lp.leftMargin - 170;
+            textView4.setLayoutParams(tv4lp);
+    }
+
+    }
 
     private class CustomTouchListener implements View.OnTouchListener {
         @Override
@@ -149,6 +136,9 @@ public class PrioritizeFour extends Fragment {
 
             final int X = (int) event.getRawX();
             final int Y = (int) event.getRawY();
+
+            String fullViewName = getResources().getResourceName(v.getId());
+            String viewName = fullViewName.substring(fullViewName.lastIndexOf("/") + 1);
 
             RelativeLayout.LayoutParams layoutParams;
 
@@ -159,7 +149,27 @@ public class PrioritizeFour extends Fragment {
 
                     xDelta = X - lParams.leftMargin;
                     yDelta = Y - lParams.topMargin;
-
+                    if (lParams.topMargin < 200) {
+                        Toast.makeText(PrioritizeFour.this.getContext(), ans1 + " " + ans2 + " " + ans3 + " " + ans4, Toast.LENGTH_SHORT).show();
+                        ansCount--;
+                        if (viewName.equals("textAns1")) {
+                            MoveLoc(ans1);
+                            ans1 = 0;
+                        }
+                        if (viewName.equals("textAns2")) {
+                            MoveLoc(ans2);
+                            ans2 = 0;
+                        }
+                        if (viewName.equals("textAns3")) {
+                            MoveLoc(ans3);
+                            ans3 = 0;
+                        }
+                        if (viewName.equals("textAns4")) {
+                            MoveLoc(ans4);
+                            ans4 = 0;
+                        }
+                    }
+                    //update other if view was on answer field.
                     break;
 
                 case MotionEvent.ACTION_UP:
@@ -167,8 +177,6 @@ public class PrioritizeFour extends Fragment {
                     layoutParams = (RelativeLayout.LayoutParams) v.getLayoutParams();
                     if (layoutParams.topMargin < 200)
                     {
-                        String fullViewName = getResources().getResourceName(v.getId());
-                        String viewName = fullViewName.substring(fullViewName.lastIndexOf("/") + 1);
                         //Toast.makeText(PrioritizeFour.this.getContext(), viewName, Toast.LENGTH_SHORT).show();
                         layoutParams.topMargin = 10;
                         layoutParams.leftMargin = ansCount * 170;
@@ -238,12 +246,6 @@ public class PrioritizeFour extends Fragment {
                     singleToneClassAns.setAns(ra);
                 else
                     singleToneClassAns.setAns(wa);
-
-//                singleToneClassAns.setAns(ques1.getQuestionRight() + " " + ans1 + " / " +
-//                            ques2.getQuestionRight() + " " + ans2 + " / " +
-//                            ques3.getQuestionRight() + " " + ans3 + " / " +
-//                            ques4.getQuestionRight() + " " + ans4);
-
                NavHostFragment.findNavController(PrioritizeFour.this)
                         .navigate(R.id.action_PrioritizeFour_to_SecondFragment);
             }
