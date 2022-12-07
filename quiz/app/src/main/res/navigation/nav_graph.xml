@@ -48,6 +48,9 @@
         <action
             android:id="@+id/action_SecondFragment_to_FewAnswersSevenOptions"
             app:destination="@id/FewAnswersSevenOptions" />
+        <action
+            android:id="@+id/action_SecondFragment_to_PrioritizeFour"
+            app:destination="@id/PrioritizeFour" />
     </fragment>
     <fragment
         android:id="@+id/OneAnswerFourOptions"
@@ -127,6 +130,16 @@
 
         <action
             android:id="@+id/action_FewAnswersSevenOptions_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/PrioritizeFour"
+        android:name="com.example.quiz.PrioritizeFour"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_PrioritizeFour_to_SecondFragment"
             app:destination="@id/SecondFragment" />
     </fragment>
 </navigation>
