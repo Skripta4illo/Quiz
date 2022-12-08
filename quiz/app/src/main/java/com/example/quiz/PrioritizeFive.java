@@ -1,30 +1,26 @@
 package com.example.quiz;
 
 import android.os.Bundle;
-import android.support.annotation.Dimension;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-// Java code to display the screen size
-// import java.lang.Object;
-// import java.awt.*;
 
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.quiz.databinding.PrioritizeFiveBinding;
 import com.example.quiz.databinding.PrioritizeFourBinding;
 
 import java.util.List;
 
 //this code is for prioritizing
-public class PrioritizeFour extends Fragment {
-    private PrioritizeFourBinding binding;
+public class PrioritizeFive extends Fragment {
+    private PrioritizeFiveBinding binding;
 
     //declare ui views
     private RelativeLayout relativeLayout;
@@ -32,6 +28,7 @@ public class PrioritizeFour extends Fragment {
     private TextView textView2;
     private TextView textView3;
     private TextView textView4;
+    private TextView textView5;
 
     private int xDelta;
     private int yDelta;
@@ -40,6 +37,7 @@ public class PrioritizeFour extends Fragment {
     private int ans2 = 0;
     private int ans3 = 0;
     private int ans4 = 0;
+    private int ans5 = 0;
 
     @Override
     public View onCreateView(
@@ -47,7 +45,7 @@ public class PrioritizeFour extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = PrioritizeFourBinding.inflate(inflater, container, false);
+        binding = PrioritizeFiveBinding.inflate(inflater, container, false);
 
         //init ui views
         relativeLayout = binding.relative;
@@ -55,6 +53,7 @@ public class PrioritizeFour extends Fragment {
         textView2 = binding.textAns2;
         textView3 = binding.textAns3;
         textView4 = binding.textAns4;
+        textView5 = binding.textAns5;
 
         //setup layout params
         RelativeLayout.LayoutParams layoutParamsta1 = new RelativeLayout.LayoutParams(800, 600);
@@ -77,10 +76,16 @@ public class PrioritizeFour extends Fragment {
         //setup touch listener
         textView4.setOnTouchListener(new CustomTouchListener());
 
+        RelativeLayout.LayoutParams layoutParamsta5 = new RelativeLayout.LayoutParams(800, 600);
+        textView5.setLayoutParams(layoutParamsta5);
+        //setup touch listener
+        textView5.setOnTouchListener(new CustomTouchListener());
+
         RndmLoc(textView1, 600,600,150,100,200);
         RndmLoc(textView2, 600,600,150,100,200);
         RndmLoc(textView3, 600,600,150,100,200);
         RndmLoc(textView4, 600,600,150,100,200);
+        RndmLoc(textView5, 600,600,150,100,200);
         return binding.getRoot();
     }
 
@@ -125,7 +130,13 @@ public class PrioritizeFour extends Fragment {
             RelativeLayout.LayoutParams tv4lp = (RelativeLayout.LayoutParams) textView4.getLayoutParams();
             tv4lp.leftMargin = tv4lp.leftMargin - 170;
             textView4.setLayoutParams(tv4lp);
-    }
+        }
+        if (ans5 > a) {
+            ans5--;
+            RelativeLayout.LayoutParams tv5lp = (RelativeLayout.LayoutParams) textView5.getLayoutParams();
+            tv5lp.leftMargin = tv5lp.leftMargin - 170;
+            textView5.setLayoutParams(tv5lp);
+        }
 
     }
 
@@ -167,6 +178,10 @@ public class PrioritizeFour extends Fragment {
                             MoveLoc(ans4);
                             ans4 = 0;
                         }
+                        if (viewName.equals("textAns5")) {
+                            MoveLoc(ans5);
+                            ans5 = 0;
+                        }
                     }
                     break;
 
@@ -183,8 +198,9 @@ public class PrioritizeFour extends Fragment {
                         if (viewName.equals("textAns2")) ans2 = ansCount;
                         if (viewName.equals("textAns3")) ans3 = ansCount;
                         if (viewName.equals("textAns4")) ans4 = ansCount;
+                        if (viewName.equals("textAns5")) ans5 = ansCount;
                     }
-                    else Toast.makeText(PrioritizeFour.this.getContext(), "Image is on new Location!", Toast.LENGTH_SHORT).show();
+                    else Toast.makeText(PrioritizeFive.this.getContext(), "Image is on new Location!", Toast.LENGTH_SHORT).show();
                     break;
                 case MotionEvent.ACTION_POINTER_DOWN:
                     break;
@@ -221,11 +237,13 @@ public class PrioritizeFour extends Fragment {
         Question ques2 = queForFrag.get(1);
         Question ques3 = queForFrag.get(2);
         Question ques4 = queForFrag.get(3);
+        Question ques5 = queForFrag.get(4);
 
         binding.textAns1.setText(ques1.getQuestionName());
         binding.textAns2.setText(ques2.getQuestionName());
         binding.textAns3.setText(ques3.getQuestionName());
         binding.textAns4.setText(ques4.getQuestionName());
+        binding.textAns5.setText(ques5.getQuestionName());
 
         singleToneClassAns singleToneClassAns = com.example.quiz.singleToneClassAns.getInstance();
         singleToneClassAns.setAns("no answer selected");
@@ -238,12 +256,13 @@ public class PrioritizeFour extends Fragment {
                 if (ques1.getQuestionRight() == ans1 &&
                         ques2.getQuestionRight() == ans2 &&
                         ques3.getQuestionRight() == ans3 &&
-                        ques4.getQuestionRight() == ans4)
+                        ques4.getQuestionRight() == ans4 &&
+                        ques5.getQuestionRight() == ans5)
                     singleToneClassAns.setAns(ra);
                 else
                     singleToneClassAns.setAns(wa);
-               NavHostFragment.findNavController(PrioritizeFour.this)
-                        .navigate(R.id.action_PrioritizeFour_to_SecondFragment);
+               NavHostFragment.findNavController(PrioritizeFive.this)
+                        .navigate(R.id.action_PrioritizeFive_to_SecondFragment);
             }
         });
     }

@@ -38,7 +38,7 @@ public class SecondFragment extends Fragment {
             public void onClick(View view) {
                 //get quiz id
                 int randomNum = (int) (Math.random() * db.getQuizCount()) + 1;
-                randomNum = 12; //test string
+                //randomNum = 15; //test string
 
                 //set quiz id to global variable
                 singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
@@ -85,8 +85,18 @@ public class SecondFragment extends Fragment {
                                 .navigate(R.id.action_SecondFragment_to_FewAnswersSevenOptions);
                 }
                 if (qt.equals("Prioritize")){
+                    if (ac == 4)
                     NavHostFragment.findNavController(SecondFragment.this)
                             .navigate(R.id.action_SecondFragment_to_PrioritizeFour);
+                    if (ac == 5)
+                        NavHostFragment.findNavController(SecondFragment.this)
+                                .navigate(R.id.action_SecondFragment_to_PrioritizeFive);
+                    if (ac == 6)
+                        NavHostFragment.findNavController(SecondFragment.this)
+                                .navigate(R.id.action_SecondFragment_to_PrioritizeSix);
+                    if (ac == 7)
+                        NavHostFragment.findNavController(SecondFragment.this)
+                                .navigate(R.id.action_SecondFragment_to_PrioritizeSeven);
                 }
             }
         });

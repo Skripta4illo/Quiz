@@ -50,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
         db.addQuiz(new Quiz(10,"Choose all correct statements 6", 6,  "Few Answers"));
         db.addQuiz(new Quiz(11,"Choose all correct statements 7", 7,  "Few Answers"));
         db.addQuiz(new Quiz(12, "Prioritize words", 4,  "Prioritize"));
+        db.addQuiz(new Quiz(13, "Prioritize words", 5,  "Prioritize"));
+        db.addQuiz(new Quiz(14, "Prioritize words", 6,  "Prioritize"));
+        db.addQuiz(new Quiz(15, "Prioritize words", 7,  "Prioritize"));
 
         DatabaseQuestionHandler dbq = new DatabaseQuestionHandler(this);
 
@@ -129,6 +132,27 @@ public class MainActivity extends AppCompatActivity {
         dbq.addQuestion(new Question(55,12,"Ivan",4));
         dbq.addQuestion(new Question(56,12,"My",1));
         dbq.addQuestion(new Question(57,12,"is",3));
+
+        dbq.addQuestion(new Question(58,13,"get",3));
+        dbq.addQuestion(new Question(59,13,"this",4));
+        dbq.addQuestion(new Question(60,13,"can",2));
+        dbq.addQuestion(new Question(61,13,"job",5));
+        dbq.addQuestion(new Question(62,13,"You",1));
+
+        dbq.addQuestion(new Question(63,14,"Something",2));
+        dbq.addQuestion(new Question(64,14,"Get",1));
+        dbq.addQuestion(new Question(65,14,"out",3));
+        dbq.addQuestion(new Question(66,14,"your",5));
+        dbq.addQuestion(new Question(67,14,"of",4));
+        dbq.addQuestion(new Question(68,14,"system",6));
+
+        dbq.addQuestion(new Question(69,15,"Bite",1));
+        dbq.addQuestion(new Question(70,15,"off",2));
+        dbq.addQuestion(new Question(71,15,"more",3));
+        dbq.addQuestion(new Question(72,15,"than",4));
+        dbq.addQuestion(new Question(73,15,"you",5));
+        dbq.addQuestion(new Question(74,15,"can",6));
+        dbq.addQuestion(new Question(75,15,"chew",7));
 
         super.onCreate(savedInstanceState);
 
