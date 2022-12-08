@@ -51,6 +51,15 @@
         <action
             android:id="@+id/action_SecondFragment_to_PrioritizeFour"
             app:destination="@id/PrioritizeFour" />
+        <action
+            android:id="@+id/action_SecondFragment_to_PrioritizeFive"
+            app:destination="@id/PrioritizeFive" />
+        <action
+            android:id="@+id/action_SecondFragment_to_PrioritizeSix"
+            app:destination="@id/PrioritizeSix" />
+        <action
+            android:id="@+id/action_SecondFragment_to_PrioritizeSeven"
+            app:destination="@id/PrioritizeSeven" />
     </fragment>
     <fragment
         android:id="@+id/OneAnswerFourOptions"
@@ -140,6 +149,36 @@
 
         <action
             android:id="@+id/action_PrioritizeFour_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/PrioritizeFive"
+        android:name="com.example.quiz.PrioritizeFive"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_PrioritizeFive_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/PrioritizeSix"
+        android:name="com.example.quiz.PrioritizeSix"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_PrioritizeSix_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/PrioritizeSeven"
+        android:name="com.example.quiz.PrioritizeSeven"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_PrioritizeSeven_to_SecondFragment"
             app:destination="@id/SecondFragment" />
     </fragment>
 </navigation>
