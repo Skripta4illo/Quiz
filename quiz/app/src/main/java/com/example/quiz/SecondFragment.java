@@ -33,6 +33,14 @@ public class SecondFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         singleToneClassAns singleToneClassAns = com.example.quiz.singleToneClassAns.getInstance();
         binding.textviewSecond.setText(singleToneClassAns.getAns());
+        binding.buttonAdd.setOnClickListener(new View.OnClickListener() {
+                                                 @Override
+                                                 public void onClick(View view) {
+
+                                                     NavHostFragment.findNavController(SecondFragment.this)
+                                                             .navigate(R.id.action_SecondFragment_to_AddQuestionOption);
+                                                 }
+                                             });
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
