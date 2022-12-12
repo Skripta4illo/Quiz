@@ -60,6 +60,9 @@
         <action
             android:id="@+id/action_SecondFragment_to_PrioritizeSeven"
             app:destination="@id/PrioritizeSeven" />
+        <action
+            android:id="@+id/action_SecondFragment_to_AddQuestionOption"
+            app:destination="@id/AddQuestionOption" />
     </fragment>
     <fragment
         android:id="@+id/OneAnswerFourOptions"
@@ -179,6 +182,29 @@
 
         <action
             android:id="@+id/action_PrioritizeSeven_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/AddQuestionOption"
+        android:name="com.example.quiz.AddQuestionOptions"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_AddQuestionOption_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_AddQuestionOption_to_AddOneAnswerThreeOption"
+            app:destination="@id/AddOneAnswerThreeOption" />
+    </fragment>
+    <fragment
+        android:id="@+id/AddOneAnswerThreeOption"
+        android:name="com.example.quiz.AddOneAnswerThreeOptions"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_AddOneAnswerThreeOption_to_SecondFragment"
             app:destination="@id/SecondFragment" />
     </fragment>
 </navigation>
