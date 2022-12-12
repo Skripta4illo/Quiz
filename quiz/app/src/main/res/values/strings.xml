@@ -6,7 +6,11 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Vote</string>
     <string name="previous">new Question</string>
+    <string name="add">Add</string>
+    <string name="contin">Continue</string>
 
     <string name="hello_first_fragment">The quiz should be here</string>
+    <string name="quiz_type">Choose quiz type</string>
+    <string name="answer_count">Choose answer count</string>
     <string name="hello_second_fragment">Wow</string>
 </resources>
