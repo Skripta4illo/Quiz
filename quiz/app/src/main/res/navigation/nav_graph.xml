@@ -196,6 +196,9 @@
         <action
             android:id="@+id/action_AddQuestionOption_to_AddOneAnswerThreeOption"
             app:destination="@id/AddOneAnswerThreeOption" />
+        <action
+            android:id="@+id/action_AddQuestionOption_to_AddOneAnswerFourOption"
+            app:destination="@id/AddOneAnswerFourOption" />
     </fragment>
     <fragment
         android:id="@+id/AddOneAnswerThreeOption"
@@ -205,6 +208,16 @@
 
         <action
             android:id="@+id/action_AddOneAnswerThreeOption_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/AddOneAnswerFourOption"
+        android:name="com.example.quiz.AddOneAnswerFourOptions"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_AddOneAnswerFourOption_to_SecondFragment"
             app:destination="@id/SecondFragment" />
     </fragment>
 </navigation>
