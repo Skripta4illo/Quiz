@@ -9,21 +9,19 @@ import android.view.ViewGroup;
 
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.quiz.databinding.AddOneAnswerFourOptionBinding;
 import com.example.quiz.databinding.AddOneAnswerThreeOptionBinding;
-import com.example.quiz.databinding.FragmentFirstBinding;
+//this code is for adding one answer from 4 options
 
-import java.util.List;
-//this code is for adding one answer from 3 options
-
-public class AddOneAnswerThreeOptions extends Fragment {
-    private AddOneAnswerThreeOptionBinding binding;
+public class AddOneAnswerFourOptions extends Fragment {
+    private AddOneAnswerFourOptionBinding binding;
 
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        binding = AddOneAnswerThreeOptionBinding.inflate(inflater, container, false);
+        binding = AddOneAnswerFourOptionBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -34,14 +32,12 @@ public class AddOneAnswerThreeOptions extends Fragment {
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //check if the only answer is true
-
                 //record to database
                 DatabaseHandler db = new DatabaseHandler(getContext());
                 Quiz newQuiz = new Quiz();
                 newQuiz.setQuizType("One Answer");
                 newQuiz.setQuizName(binding.quizName.getText().toString());
-                newQuiz.setAnsCount(3);
+                newQuiz.setAnsCount(4);
                 db.addQuiz(newQuiz);
 
                 long nqId = db.getQuizCount();
@@ -66,8 +62,16 @@ public class AddOneAnswerThreeOptions extends Fragment {
                 ques3.setQuestionRight(Integer.parseInt(binding.answer3.getText().toString()));
                 dbq.addQuestion(ques3);
 
-                NavHostFragment.findNavController(AddOneAnswerThreeOptions.this)
-                        .navigate(R.id.action_AddOneAnswerThreeOption_to_SecondFragment);
+                Question ques4 = new Question();
+                ques4.setQuizID(nqId);
+                ques4.setQuestionName(binding.question4.getText().toString());
+                ques4.setQuestionRight(Integer.parseInt(binding.answer4.getText().toString()));
+                dbq.addQuestion(ques4);
+
+                //check if the only answer is true
+
+                NavHostFragment.findNavController(AddOneAnswerFourOptions.this)
+                        .navigate(R.id.action_AddOneAnswerFourOption_to_SecondFragment);
 
             }
         });

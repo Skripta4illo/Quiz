@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.quiz.databinding.AddOneAnswerThreeOptionBinding;
 import com.example.quiz.databinding.AddQuestionOptionsBinding;
 //this code is for adding one answer from 3 options
 
@@ -34,8 +33,13 @@ public class AddQuestionOptions extends Fragment {
             public void onClick(View view) {
                 //check question type
                 //check if the only answer is true
-                NavHostFragment.findNavController(AddQuestionOptions.this)
+
+                if (!binding.ans4.isChecked() && !binding.ans5.isChecked() && !binding.ans6.isChecked() && !binding.ans7.isChecked() && binding.firstAnswer.isChecked())
+                    NavHostFragment.findNavController(AddQuestionOptions.this)
                         .navigate(R.id.action_AddQuestionOption_to_AddOneAnswerThreeOption);
+                if (binding.ans4.isChecked() && binding.firstAnswer.isChecked())
+                    NavHostFragment.findNavController(AddQuestionOptions.this)
+                            .navigate(R.id.action_AddQuestionOption_to_AddOneAnswerFourOption);
             }
         });
     }

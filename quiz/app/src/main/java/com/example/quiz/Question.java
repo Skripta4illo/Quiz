@@ -1,8 +1,8 @@
 package com.example.quiz;
 
 public class Question {
-    int _id;
-    int _quiz_id;
+    long _id;
+    long _quiz_id;
     String _question_name;
     int _question_right;
 
@@ -23,11 +23,11 @@ public class Question {
     }
 
 
-    public int getIDa(){
+    public long getIDa(){
         return this._id;
     }
 
-    public void setIDa(int id){
+    public void setIDa(long id){
         this._id = id;
     }
 
@@ -39,11 +39,11 @@ public class Question {
         this._question_name = question_name;
     }
 
-    public int getQuizID(){
+    public long getQuizID(){
         return this._quiz_id;
     }
 
-    public void setQuizID(int quiz_id){
+    public void setQuizID(long quiz_id){
         this._quiz_id = quiz_id;
     }
 

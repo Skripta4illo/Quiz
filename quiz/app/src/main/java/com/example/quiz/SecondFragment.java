@@ -46,7 +46,7 @@ public class SecondFragment extends Fragment {
             public void onClick(View view) {
                 //get quiz id
                 int randomNum = (int) (Math.random() * db.getQuizCount()) + 1;
-                //randomNum = 15; //test string
+                randomNum = 16; //test string
 
                 //set quiz id to global variable
                 singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
