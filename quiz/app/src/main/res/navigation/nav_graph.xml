@@ -199,6 +199,15 @@
         <action
             android:id="@+id/action_AddQuestionOption_to_AddOneAnswerFourOption"
             app:destination="@id/AddOneAnswerFourOption" />
+        <action
+            android:id="@+id/action_AddQuestionOption_to_AddOneAnswerFiveOption"
+            app:destination="@id/AddOneAnswerFiveOption" />
+        <action
+            android:id="@+id/action_AddQuestionOption_to_AddOneAnswerSixOption"
+            app:destination="@id/AddOneAnswerSixOption" />
+        <action
+            android:id="@+id/action_AddQuestionOption_to_AddOneAnswerSevenOption"
+            app:destination="@id/AddOneAnswerSevenOption" />
     </fragment>
     <fragment
         android:id="@+id/AddOneAnswerThreeOption"
@@ -218,6 +227,36 @@
 
         <action
             android:id="@+id/action_AddOneAnswerFourOption_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/AddOneAnswerFiveOption"
+        android:name="com.example.quiz.AddOneAnswerFiveOptions"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_AddOneAnswerFiveOption_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/AddOneAnswerSixOption"
+        android:name="com.example.quiz.AddOneAnswerSixOptions"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_AddOneAnswerSixOption_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/AddOneAnswerSevenOption"
+        android:name="com.example.quiz.AddOneAnswerSevenOptions"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_AddOneAnswerSevenOption_to_SecondFragment"
             app:destination="@id/SecondFragment" />
     </fragment>
 </navigation>
