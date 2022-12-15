@@ -40,6 +40,15 @@ public class AddQuestionOptions extends Fragment {
                 if (binding.ans4.isChecked() && binding.firstAnswer.isChecked())
                     NavHostFragment.findNavController(AddQuestionOptions.this)
                             .navigate(R.id.action_AddQuestionOption_to_AddOneAnswerFourOption);
+                if (binding.ans5.isChecked() && binding.firstAnswer.isChecked())
+                    NavHostFragment.findNavController(AddQuestionOptions.this)
+                            .navigate(R.id.action_AddQuestionOption_to_AddOneAnswerFiveOption);
+                if (binding.ans6.isChecked() && binding.firstAnswer.isChecked())
+                    NavHostFragment.findNavController(AddQuestionOptions.this)
+                            .navigate(R.id.action_AddQuestionOption_to_AddOneAnswerSixOption);
+                if (binding.ans7.isChecked() && binding.firstAnswer.isChecked())
+                    NavHostFragment.findNavController(AddQuestionOptions.this)
+                            .navigate(R.id.action_AddQuestionOption_to_AddOneAnswerSevenOption);
             }
         });
     }
