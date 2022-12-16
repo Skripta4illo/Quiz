@@ -33,20 +33,80 @@ public class AddOneAnswerSevenOptions extends Fragment {
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                boolean fillCorrect = false;
+                singleToneClassAns singleToneClassAns = com.example.quiz.singleToneClassAns.getInstance();
+                String qt = singleToneClassAns.getAns();
+
                 try {
-                    if((Integer.parseInt(binding.answer1.getText().toString()) + Integer.parseInt(binding.answer2.getText().toString()) +
-                            Integer.parseInt(binding.answer3.getText().toString()) + Integer.parseInt(binding.answer4.getText().toString()) == 1) &&
-                            (binding.answer1.getText().toString().equals("0") || binding.answer1.getText().toString().equals("1")) &&
-                            (binding.answer2.getText().toString().equals("0") || binding.answer2.getText().toString().equals("1")) &&
-                            (binding.answer3.getText().toString().equals("0") || binding.answer3.getText().toString().equals("1")) &&
-                            (binding.answer4.getText().toString().equals("0") || binding.answer4.getText().toString().equals("1")) &&
-                            (binding.answer5.getText().toString().equals("0") || binding.answer5.getText().toString().equals("1")) &&
-                            (binding.answer6.getText().toString().equals("0") || binding.answer6.getText().toString().equals("1")) &&
-                            (binding.answer7.getText().toString().equals("0") || binding.answer7.getText().toString().equals("1"))){
+                    if (qt == "One Answer")
+                        if ((Integer.parseInt(binding.answer1.getText().toString()) + Integer.parseInt(binding.answer2.getText().toString()) +
+                                Integer.parseInt(binding.answer3.getText().toString()) + Integer.parseInt(binding.answer4.getText().toString())
+                                + Integer.parseInt(binding.answer5.getText().toString()) + Integer.parseInt(binding.answer6.getText().toString())
+                                + Integer.parseInt(binding.answer7.getText().toString()) == 1) &&
+                                (binding.answer1.getText().toString().equals("0") || binding.answer1.getText().toString().equals("1")) &&
+                                (binding.answer2.getText().toString().equals("0") || binding.answer2.getText().toString().equals("1")) &&
+                                (binding.answer3.getText().toString().equals("0") || binding.answer3.getText().toString().equals("1")) &&
+                                (binding.answer4.getText().toString().equals("0") || binding.answer4.getText().toString().equals("1")) &&
+                                (binding.answer5.getText().toString().equals("0") || binding.answer5.getText().toString().equals("1")) &&
+                                (binding.answer6.getText().toString().equals("0") || binding.answer6.getText().toString().equals("1")) &&
+                                (binding.answer7.getText().toString().equals("0") || binding.answer7.getText().toString().equals("1")))
+                            fillCorrect = true;
+                        else
+                            Toast.makeText(getActivity(), "Only one answer should be correct and answers should be only 0 or 1", Toast.LENGTH_SHORT).show();
+
+                    if (qt == "Few Answers")
+                        if ((binding.answer1.getText().toString().equals("0") || binding.answer1.getText().toString().equals("1")) &&
+                                (binding.answer2.getText().toString().equals("0") || binding.answer2.getText().toString().equals("1")) &&
+                                (binding.answer3.getText().toString().equals("0") || binding.answer3.getText().toString().equals("1")) &&
+                                (binding.answer4.getText().toString().equals("0") || binding.answer4.getText().toString().equals("1")) &&
+                                (binding.answer5.getText().toString().equals("0") || binding.answer5.getText().toString().equals("1")) &&
+                                (binding.answer6.getText().toString().equals("0") || binding.answer6.getText().toString().equals("1")) &&
+                                (binding.answer7.getText().toString().equals("0") || binding.answer7.getText().toString().equals("1")))
+                            fillCorrect = true;
+                        else
+                            Toast.makeText(getActivity(), "Only one answer should be correct and answers should be only 0 or 1", Toast.LENGTH_SHORT).show();
+
+                    if (qt == "Prioritize")
+                        if ((Integer.parseInt(binding.answer1.getText().toString()) > 0 && Integer.parseInt(binding.answer1.getText().toString()) < 8) &&
+                                (Integer.parseInt(binding.answer2.getText().toString()) > 0 && Integer.parseInt(binding.answer2.getText().toString()) < 8) &&
+                                (Integer.parseInt(binding.answer3.getText().toString()) > 0 && Integer.parseInt(binding.answer3.getText().toString()) < 8) &&
+                                (Integer.parseInt(binding.answer4.getText().toString()) > 0 && Integer.parseInt(binding.answer4.getText().toString()) < 8) &&
+                                (Integer.parseInt(binding.answer5.getText().toString()) > 0 && Integer.parseInt(binding.answer5.getText().toString()) < 8) &&
+                                (Integer.parseInt(binding.answer6.getText().toString()) > 0 && Integer.parseInt(binding.answer6.getText().toString()) < 8) &&
+                                (Integer.parseInt(binding.answer7.getText().toString()) > 0 && Integer.parseInt(binding.answer7.getText().toString()) < 8) &&
+                                (Integer.parseInt(binding.answer1.getText().toString()) != Integer.parseInt(binding.answer2.getText().toString())) &&
+                                (Integer.parseInt(binding.answer1.getText().toString()) != Integer.parseInt(binding.answer3.getText().toString())) &&
+                                (Integer.parseInt(binding.answer1.getText().toString()) != Integer.parseInt(binding.answer4.getText().toString())) &&
+                                (Integer.parseInt(binding.answer1.getText().toString()) != Integer.parseInt(binding.answer5.getText().toString())) &&
+                                (Integer.parseInt(binding.answer1.getText().toString()) != Integer.parseInt(binding.answer6.getText().toString())) &&
+                                (Integer.parseInt(binding.answer1.getText().toString()) != Integer.parseInt(binding.answer7.getText().toString())) &&
+                                (Integer.parseInt(binding.answer3.getText().toString()) != Integer.parseInt(binding.answer2.getText().toString())) &&
+                                (Integer.parseInt(binding.answer4.getText().toString()) != Integer.parseInt(binding.answer2.getText().toString())) &&
+                                (Integer.parseInt(binding.answer5.getText().toString()) != Integer.parseInt(binding.answer2.getText().toString())) &&
+                                (Integer.parseInt(binding.answer6.getText().toString()) != Integer.parseInt(binding.answer2.getText().toString())) &&
+                                (Integer.parseInt(binding.answer7.getText().toString()) != Integer.parseInt(binding.answer2.getText().toString())) &&
+                                (Integer.parseInt(binding.answer4.getText().toString()) != Integer.parseInt(binding.answer3.getText().toString())) &&
+                                (Integer.parseInt(binding.answer5.getText().toString()) != Integer.parseInt(binding.answer3.getText().toString())) &&
+                                (Integer.parseInt(binding.answer6.getText().toString()) != Integer.parseInt(binding.answer3.getText().toString())) &&
+                                (Integer.parseInt(binding.answer7.getText().toString()) != Integer.parseInt(binding.answer3.getText().toString())) &&
+                                (Integer.parseInt(binding.answer4.getText().toString()) != Integer.parseInt(binding.answer5.getText().toString())) &&
+                                (Integer.parseInt(binding.answer4.getText().toString()) != Integer.parseInt(binding.answer6.getText().toString())) &&
+                                (Integer.parseInt(binding.answer4.getText().toString()) != Integer.parseInt(binding.answer7.getText().toString())) &&
+                                (Integer.parseInt(binding.answer6.getText().toString()) != Integer.parseInt(binding.answer5.getText().toString())) &&
+                                (Integer.parseInt(binding.answer7.getText().toString()) != Integer.parseInt(binding.answer5.getText().toString())) &&
+                                (Integer.parseInt(binding.answer6.getText().toString()) != Integer.parseInt(binding.answer7.getText().toString())))
+                            fillCorrect = true;
+                        else
+                            Toast.makeText(getActivity(), "Only one answer should be correct and answers should be between 1 and 7 and should be unique", Toast.LENGTH_SHORT).show();
+
+                } catch (Exception e) {
+                    Toast.makeText(getActivity(), "Enter correct answers", Toast.LENGTH_SHORT).show();
+                }
+                if (fillCorrect) {
                         //record to database
                         DatabaseHandler db = new DatabaseHandler(getContext());
                         Quiz newQuiz = new Quiz();
-                        newQuiz.setQuizType("One Answer");
+                        newQuiz.setQuizType(qt);
                         newQuiz.setQuizName(binding.quizName.getText().toString());
                         newQuiz.setAnsCount(7);
                         db.addQuiz(newQuiz);
@@ -105,11 +165,6 @@ public class AddOneAnswerSevenOptions extends Fragment {
                     }
 
                 }
-                catch (Exception e){
-                    Toast.makeText(getActivity(), "Answer could be only 1 or 0", Toast.LENGTH_SHORT).show();
-                }
-
-            }
         });
     }
 
