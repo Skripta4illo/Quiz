@@ -35,18 +35,18 @@
             android:id="@+id/firstAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="one answer"
+            android:text="One Answer"
             android:checked="true"/>
         <RadioButton
             android:id="@+id/SecondAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="few answers" />
+            android:text="Few Answers" />
         <RadioButton
             android:id="@+id/ThirdAnswer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="prioritize" />
+            android:text="Prioritize" />
     </RadioGroup>
 
     <TextView
