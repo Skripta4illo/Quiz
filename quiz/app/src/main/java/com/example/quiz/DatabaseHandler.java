@@ -58,7 +58,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     // code to get the single quiz
-    Quiz getQuiz(int id) {
+    Quiz getQuiz(long id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_QUIZES, new String[] { KEY_ID,

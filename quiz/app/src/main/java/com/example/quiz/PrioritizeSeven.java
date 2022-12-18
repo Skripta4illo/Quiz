@@ -303,7 +303,7 @@ public class PrioritizeSeven extends Fragment {
 
         //get quiz id from global variable
         singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
-        int quiz_id = singleToneClass.getData();
+        long quiz_id = singleToneClass.getData();
 
         DatabaseQuestionHandler dbq = new DatabaseQuestionHandler(this.getContext());
         List<Question> queForFrag = dbq.getAllQuestionInQuiz(quiz_id);

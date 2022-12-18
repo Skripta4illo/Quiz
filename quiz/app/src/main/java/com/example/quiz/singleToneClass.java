@@ -2,7 +2,7 @@ package com.example.quiz;
 
 public class singleToneClass {
     //String s;
-    int cou;
+    long cou;
     private static final singleToneClass ourInstance = new singleToneClass();
     public static singleToneClass getInstance() {
         return ourInstance;
@@ -12,7 +12,7 @@ public class singleToneClass {
     public void setData(int cou) {
         this.cou = cou;
     }
-    public int getData() {
+    public long getData() {
         return cou;
     }
 }

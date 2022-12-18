@@ -36,7 +36,7 @@ public class FewAnswersFourOptions extends Fragment {
 
         //get quiz id from global variable
         singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
-        int quiz_id = singleToneClass.getData();
+        long quiz_id = singleToneClass.getData();
 
         //int randomNum = (int) (Math.random() * db.getQuizCount()) + 1;
 

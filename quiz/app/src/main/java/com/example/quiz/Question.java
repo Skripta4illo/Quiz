@@ -9,14 +9,14 @@ public class Question {
     public Question() {
     }
 
-    public Question(int id, int quiz_id, String question_name, int _question_right) {
+    public Question(long id, long quiz_id, String question_name, int _question_right) {
         this._id = id;
         this._question_name = question_name;
         this._quiz_id = quiz_id;
         this._question_right = _question_right;
     }
 
-    public Question(int quiz_id, String question_name, int _question_right){
+    public Question(long quiz_id, String question_name, int _question_right){
         this._question_name = question_name;
         this._quiz_id = quiz_id;
         this._question_right = _question_right;

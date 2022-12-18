@@ -59,7 +59,7 @@ public class DatabaseQuestionHandler extends SQLiteOpenHelper {
     }
 
     // code to get the single question
-    Question getQuestion(int id) {
+    Question getQuestion(long id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_QUESTIONS, new String[] { KEY_ID, KEY_Q_ID,
@@ -102,7 +102,7 @@ public class DatabaseQuestionHandler extends SQLiteOpenHelper {
 
 
     // all questions from quiz
-    public List<Question> getAllQuestionInQuiz(int quizId) {
+    public List<Question> getAllQuestionInQuiz(long quizId) {
         List<Question> questionList = new ArrayList<Question>();
         // Select All Question
         String selectQuery = "SELECT  * FROM " + TABLE_QUESTIONS + " WHERE " + KEY_Q_ID +

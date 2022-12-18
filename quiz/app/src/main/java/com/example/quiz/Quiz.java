@@ -1,7 +1,7 @@
 package com.example.quiz;
 
 public class Quiz {
-    int _id;
+    long _id;
     String _quiz_name;
     int _ans_count;
     String _quiz_type;
@@ -9,7 +9,7 @@ public class Quiz {
     public Quiz() {
     }
 
-    public Quiz(int id, String quiz_name, int _ans_count, String _quiz_type) {
+    public Quiz(long id, String quiz_name, int _ans_count, String _quiz_type) {
         this._id = id;
         this._quiz_name = quiz_name;
         this._ans_count = _ans_count;
@@ -23,11 +23,11 @@ public class Quiz {
     }
 
 
-    public int getID(){
+    public long getID(){
         return this._id;
     }
 
-    public void setID(int id){
+    public void setID(long id){
         this._id = id;
     }
 
