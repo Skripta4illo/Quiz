@@ -17,7 +17,7 @@ public class DatabaseUserHandler extends SQLiteOpenHelper {
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "user_name";
     private static final String KEY_U_EM = "user_email";
-    private static final String KEY_U_PW = "_user_password";
+    private static final String KEY_U_PW = "user_password";
     private static final String KEY_U_VER = "user_verification";
 
     public DatabaseUserHandler(Context context) {

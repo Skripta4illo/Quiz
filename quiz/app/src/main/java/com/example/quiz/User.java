@@ -10,7 +10,7 @@ public class User {
     public User() {
     }
 
-    public User(int id, String _user_name, String _user_email, String _user_password, boolean _user_verification) {
+    public User(long id, String _user_name, String _user_email, String _user_password, boolean _user_verification) {
         this._id = id;
         this._user_name = _user_name;
         this._user_email = _user_email;
