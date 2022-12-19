@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +73,6 @@ public class DatabaseUserHandler extends SQLiteOpenHelper {
 
         User user = new User(Integer.parseInt(cursor.getString(0)),
                 cursor.getString(1), cursor.getString(2),  cursor.getString(3), Boolean.parseBoolean(cursor.getString(4)));
-        // return question
         return user;
     }
 
@@ -80,7 +80,7 @@ public class DatabaseUserHandler extends SQLiteOpenHelper {
     public List<User> getAllUser() {
         List<User> userList = new ArrayList<User>();
         // Select All Question
-        String selectQuery = "SELECT  * FROM " + TABLE_USERS;
+        String selectQuery = "SELECT * FROM " + TABLE_USERS;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -101,6 +101,44 @@ public class DatabaseUserHandler extends SQLiteOpenHelper {
 
         // return contact list
         return userList;
+    }
+
+    public boolean checkUser(String name, String pass){
+        String selectQuery = "SELECT count(*) FROM " + TABLE_USERS + " WHERE " + KEY_NAME + " =?  AND " + KEY_U_PW + " =? ";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cur = db.rawQuery(selectQuery, new String[] { String.valueOf(name), String.valueOf(pass) });
+        if (cur != null) {
+            cur.moveToFirst();                       // Always one row returned.
+            if (cur.getInt (0) == 0) {               // Zero count means empty table.
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+        else {
+            return false;
+        }
+    }
+
+
+    public long getUserId(String name){
+        String selectQuery = "SELECT " + KEY_ID + " FROM " + TABLE_USERS + " WHERE " + KEY_NAME + " =? ";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cur = db.rawQuery(selectQuery, new String[] { String.valueOf(name)});
+
+        if (cur != null) {
+            cur.moveToFirst();                       // Always one row returned.
+            if (cur.getInt (0) != 0) {               // Zero count means empty table.
+                return cur.getLong(0);
+            }
+            else{
+                return 0;
+            }
+        }
+        else {
+            return 0;
+        }
     }
 
     // code to update the single user

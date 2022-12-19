@@ -1,5 +1,6 @@
 package com.example.quiz;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -48,9 +49,21 @@ public class LoginPage extends Fragment {
         binding.login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //check if user is exist
-                NavHostFragment.findNavController(LoginPage.this)
-                        .navigate(R.id.action_LoginRegister_to_SecondFragment);
+                //check if user is exist and password is correct
+                if (dbu.checkUser(binding.Name.getText().toString(), binding.password.getText().toString())){
+                    //get user id
+                    long uid = dbu.getUserId(binding.Name.getText().toString());
+                    singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
+                    singleToneClass.setUid(uid);
+
+                    NavHostFragment.findNavController(LoginPage.this)
+                            .navigate(R.id.action_LoginRegister_to_SecondFragment);
+                }
+                else
+                {
+                    Toast.makeText(LoginPage.this.getContext(), "There are no matches for the user and password", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
