@@ -32,6 +32,9 @@ public class LoginPage extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //open user db
+        DatabaseUserHandler dbu = new DatabaseUserHandler(this.getContext());
+
         //hide registration fields
         binding.tvNewName.setVisibility(View.INVISIBLE);
         binding.newName.setVisibility(View.INVISIBLE);
@@ -77,6 +80,7 @@ public class LoginPage extends Fragment {
             @Override
             public void onClick(View view) {
                 String getEmailId = binding.newEmail.getText().toString();
+                // Check if name is available
 
                 // Check if email id is valid or not
                 if (!emailValidator(getEmailId)){
@@ -92,8 +96,19 @@ public class LoginPage extends Fragment {
                         if (!binding.newPass.getText().toString().equals(binding.confPass.getText().toString())){
                             Toast.makeText(LoginPage.this.getContext(), "Passwords should be the same!", Toast.LENGTH_SHORT).show();
                         }
-                        else
-                            Toast.makeText(LoginPage.this.getContext(), "User is created", Toast.LENGTH_SHORT).show();
+                        else {
+                            User nu = new User();
+                            nu.setUserName(binding.newName.getText().toString());
+                            nu.setUserEmail(binding.newEmail.getText().toString());
+                            nu.setUserPassword(binding.newPass.getText().toString());
+                            nu.setUserVerification(false);
+                            dbu.addUser(nu);
+                            long nuId = dbu.getUserCount();
+                            singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
+                            singleToneClass.setUid(nuId);
+                            NavHostFragment.findNavController(LoginPage.this)
+                                    .navigate(R.id.action_LoginRegister_to_SecondFragment);
+                        }
                         //adding to the database
 
             }

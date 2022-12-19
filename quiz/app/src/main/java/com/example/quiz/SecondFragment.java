@@ -28,11 +28,21 @@ public class SecondFragment extends Fragment {
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        //get quiz id
+
         DatabaseHandler db = new DatabaseHandler(this.getContext());
+        DatabaseUserHandler dbu = new DatabaseUserHandler(this.getContext());
         super.onViewCreated(view, savedInstanceState);
+        //get user id
+        singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
+        long uid = singleToneClass.getUid();
+
+        //get user name
+        User user = dbu.getUser(uid);
+        String userName = user.getUserName();
+
         singleToneClassAns singleToneClassAns = com.example.quiz.singleToneClassAns.getInstance();
-        binding.textviewSecond.setText(singleToneClassAns.getAns());
+        //get quiz id
+        binding.textView.setText(singleToneClassAns.getAns() + userName);
         binding.buttonAdd.setOnClickListener(new View.OnClickListener() {
                                                  @Override
                                                  public void onClick(View view) {

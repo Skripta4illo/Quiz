@@ -61,7 +61,7 @@ public class DatabaseUserHandler extends SQLiteOpenHelper {
     }
 
     // code to get the single user
-    User getUser(int id) {
+    User getUser(long id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_USERS, new String[] { KEY_ID, KEY_NAME,
@@ -104,7 +104,7 @@ public class DatabaseUserHandler extends SQLiteOpenHelper {
     }
 
     // code to update the single user
-    public int updateUser(User user) {
+    public long updateUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();

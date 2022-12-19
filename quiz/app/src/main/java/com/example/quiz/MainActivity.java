@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         singleToneClassAns singleToneClassAns = com.example.quiz.singleToneClassAns.getInstance();
-        singleToneClassAns.setAns("Welcome!");
+        singleToneClassAns.setAns("Welcome ");
 
         DatabaseHandler db = new DatabaseHandler(this);
         DatabaseQuestionHandler dbq = new DatabaseQuestionHandler(this);
