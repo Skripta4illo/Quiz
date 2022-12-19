@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/SecondFragment">
+    app:startDestination="@id/LoginRegister">
 
     <fragment
         android:id="@+id/FirstFragment"
@@ -257,6 +257,16 @@
 
         <action
             android:id="@+id/action_AddOneAnswerSevenOption_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/LoginRegister"
+        android:name="com.example.quiz.LoginPage"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_LoginRegister_to_SecondFragment"
             app:destination="@id/SecondFragment" />
     </fragment>
 </navigation>
