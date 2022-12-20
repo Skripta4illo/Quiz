@@ -11,7 +11,7 @@ import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "quizManager";
+    private static final String DATABASE_NAME = "quizManager.sqlite";
     private static final String TABLE_QUIZES = "quizes";
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "quiz_name";
