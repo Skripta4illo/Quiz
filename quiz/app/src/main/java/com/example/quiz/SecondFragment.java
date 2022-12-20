@@ -56,11 +56,11 @@ public class SecondFragment extends Fragment {
             public void onClick(View view) {
                 //get quiz id
                 int randomNum = (int) (Math.random() * db.getQuizCount()) + 1;
-                //randomNum = 16; //test string
+                randomNum = 1; //test string
 
                 //set quiz id to global variable
                 singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
-                singleToneClass.setData(randomNum);
+                singleToneClass.setQuizId(randomNum);
 
                 //get quiz
                 Quiz quiz1 = db.getQuiz(randomNum);

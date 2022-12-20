@@ -4,6 +4,8 @@ public class singleToneClass {
     //String s;
     long cou;
     long uid;
+    long quizId;
+    long questionId;
     private static final singleToneClass ourInstance = new singleToneClass();
     public static singleToneClass getInstance() {
         return ourInstance;
@@ -21,5 +23,17 @@ public class singleToneClass {
     }
     public long getUid() {
         return uid;
+    }
+    public void setQuizId(long quizId) {
+        this.quizId = quizId;
+    }
+    public long getQuizId() {
+        return quizId;
+    }
+    public void setQuestionId(long questionId) {
+        this.questionId = questionId;
+    }
+    public long getQuestionId() {
+        return questionId;
     }
 }

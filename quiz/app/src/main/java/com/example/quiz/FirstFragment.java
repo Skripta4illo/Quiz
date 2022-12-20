@@ -31,11 +31,13 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        DatabaseUserAnswerHandler dbua = new DatabaseUserAnswerHandler(this.getContext());
+
         DatabaseHandler db = new DatabaseHandler(this.getContext());
 
         //get quiz id from global variable
         singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
-        long quiz_id = singleToneClass.getData();
+        long quiz_id = singleToneClass.getQuizId();
 
         Quiz quiz1 = db.getQuiz(quiz_id);
         String qn = quiz1.getQuizName();
@@ -58,6 +60,21 @@ public class FirstFragment extends Fragment {
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //write data to UserAnswer
+                int[] ansArray = new int[]{binding.firstAnswer.isChecked()?1:0,
+                        binding.SecondAnswer.isChecked()?1:0, binding.ThirdAnswer.isChecked()?1:0};
+                UserAnswer userAnswer = new UserAnswer();
+
+                for (int aa = 0; aa<3; aa++){
+                    userAnswer.setUserId(singleToneClass.getUid());
+                    userAnswer.setQuizId(quiz_id);
+                    userAnswer.setQuestionId(queForFrag.get(aa).getIDa());
+                    userAnswer.setUserAnswer(ansArray[aa]);
+                    dbua.addUserAnswer(userAnswer);
+                }
+
+                //check if answer is correct
                 String ra = " - This is the correct answer!";
                 String wa = " - This is incorrect answer!";
                 if (binding.firstAnswer.isChecked()){

@@ -36,7 +36,7 @@ public class OneAnswerFiveOptions extends Fragment {
 
         //get quiz id from global variable
         singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
-        long quiz_id = singleToneClass.getData();
+        long quiz_id = singleToneClass.getQuizId();
 
         Quiz quiz1 = db.getQuiz(quiz_id);
         String qn = quiz1.getQuizName();

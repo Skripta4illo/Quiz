@@ -119,7 +119,7 @@ public class DatabaseUserAnswerHandler extends SQLiteOpenHelper {
                 new String[] { String.valueOf(userAnswer.getIDua()) });
     }
 
-    // Deleting single user
+    // Deleting single user answer
     public void deleteUserAnswer(UserAnswer userAnswer) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_USERS_ANSWER, KEY_ID + " = ?",
