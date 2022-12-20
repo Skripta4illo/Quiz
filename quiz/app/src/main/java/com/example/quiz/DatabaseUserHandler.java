@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DatabaseUserHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "userManager.sqlite";
+    private static final String DATABASE_NAME = "userManager";
     private static final String TABLE_USERS = "users";
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "user_name";
