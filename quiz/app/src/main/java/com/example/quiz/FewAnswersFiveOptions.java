@@ -31,6 +31,7 @@ public class FewAnswersFiveOptions extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        DatabaseUserAnswerHandler dbua = new DatabaseUserAnswerHandler(this.getContext());
         DatabaseHandler db = new DatabaseHandler(this.getContext());
 
         //get quiz id from global variable
@@ -62,21 +63,36 @@ public class FewAnswersFiveOptions extends Fragment {
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //boolean Correct = false;
-                String ra = "This is the correct answer!";
-                String wa = "This is incorrect answer!";
-                if ((binding.firstAnswer.isChecked() ^ ques1.getQuestionRight() == 0) &&
-                        (binding.SecondAnswer.isChecked() ^ ques2.getQuestionRight() == 0) &&
-                        (binding.ThirdAnswer.isChecked() ^ ques3.getQuestionRight() == 0) &&
-                        (binding.fourthAnswer.isChecked() ^ ques4.getQuestionRight() == 0) &&
-                        (binding.fifthAnswer.isChecked() ^ ques5.getQuestionRight() == 0))
-                        singleToneClassAns.setAns(ra);
-                    else
-                        singleToneClassAns.setAns(wa);
+                String ra = " - This is the correct answer!";
+                String wa = " - This is incorrect answer!";
+
+                //write data to UserAnswer
+                int[] ansArray = new int[]{binding.firstAnswer.isChecked()?1:0,
+                        binding.SecondAnswer.isChecked()?1:0, binding.ThirdAnswer.isChecked()?1:0,
+                        binding.fourthAnswer.isChecked()?1:0, binding.fifthAnswer.isChecked()?1:0};
+                UserAnswer userAnswer = new UserAnswer();
+
+                for (int aa = 0; aa<5; aa++){
+                    userAnswer.setIDua(dbua.getUserAnswerCount());
+                    userAnswer.setUserId(singleToneClass.getUid());
+                    userAnswer.setQuizId(quiz_id);
+                    userAnswer.setQuestionId(queForFrag.get(aa).getIDa());
+                    userAnswer.setUserAnswer(ansArray[aa]);
+                    dbua.addUserAnswer(userAnswer);
+                }
+
+                //check if answer is correct
+                if ((binding.firstAnswer.isChecked() ^ queForFrag.get(0).getQuestionRight() == 0) &&
+                        (binding.SecondAnswer.isChecked() ^ queForFrag.get(1).getQuestionRight() == 0) &&
+                        (binding.ThirdAnswer.isChecked() ^ queForFrag.get(2).getQuestionRight() == 0) &&
+                        (binding.fourthAnswer.isChecked() ^ queForFrag.get(3).getQuestionRight() == 0) &&
+                        (binding.fifthAnswer.isChecked() ^ queForFrag.get(4).getQuestionRight() == 0))
+                    singleToneClassAns.setAns(ra);
+                else
+                    singleToneClassAns.setAns(wa);
 
                 NavHostFragment.findNavController(FewAnswersFiveOptions.this)
                         .navigate(R.id.action_FewAnswersFiveOptions_to_SecondFragment);
-
             }
         });
     }
