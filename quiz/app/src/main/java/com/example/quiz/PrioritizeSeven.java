@@ -299,7 +299,7 @@ public class PrioritizeSeven extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        DatabaseHandler db = new DatabaseHandler(this.getContext());
+        DatabaseUserAnswerHandler dbua = new DatabaseUserAnswerHandler(this.getContext());
 
         //get quiz id from global variable
         singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
@@ -330,6 +330,19 @@ public class PrioritizeSeven extends Fragment {
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //write data to UserAnswer
+                int[] ansArray = new int[]{ans1, ans2, ans3, ans4, ans5, ans6, ans7};
+                UserAnswer userAnswer = new UserAnswer();
+
+                for (int aa = 0; aa<7; aa++){
+                    userAnswer.setIDua(dbua.getUserAnswerCount());
+                    userAnswer.setUserId(singleToneClass.getUid());
+                    userAnswer.setQuizId(quiz_id);
+                    userAnswer.setQuestionId(queForFrag.get(aa).getIDa());
+                    userAnswer.setUserAnswer(ansArray[aa]);
+                    dbua.addUserAnswer(userAnswer);
+                }
+
                 String ra = "This is the correct answer!";
                 String wa = "This is incorrect answer!";
                 if (ques1.getQuestionRight() == ans1 &&

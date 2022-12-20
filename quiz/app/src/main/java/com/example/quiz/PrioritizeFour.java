@@ -208,7 +208,7 @@ public class PrioritizeFour extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        DatabaseHandler db = new DatabaseHandler(this.getContext());
+        DatabaseUserAnswerHandler dbua = new DatabaseUserAnswerHandler(this.getContext());
 
         //get quiz id from global variable
         singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
@@ -217,15 +217,10 @@ public class PrioritizeFour extends Fragment {
         DatabaseQuestionHandler dbq = new DatabaseQuestionHandler(this.getContext());
         List<Question> queForFrag = dbq.getAllQuestionInQuiz(quiz_id);
 
-        Question ques1 = queForFrag.get(0);
-        Question ques2 = queForFrag.get(1);
-        Question ques3 = queForFrag.get(2);
-        Question ques4 = queForFrag.get(3);
-
-        binding.textAns1.setText(ques1.getQuestionName());
-        binding.textAns2.setText(ques2.getQuestionName());
-        binding.textAns3.setText(ques3.getQuestionName());
-        binding.textAns4.setText(ques4.getQuestionName());
+        binding.textAns1.setText(queForFrag.get(0).getQuestionName());
+        binding.textAns2.setText(queForFrag.get(1).getQuestionName());
+        binding.textAns3.setText(queForFrag.get(2).getQuestionName());
+        binding.textAns4.setText(queForFrag.get(3).getQuestionName());
 
         singleToneClassAns singleToneClassAns = com.example.quiz.singleToneClassAns.getInstance();
         singleToneClassAns.setAns("no answer selected");
@@ -233,12 +228,26 @@ public class PrioritizeFour extends Fragment {
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //write data to UserAnswer
+                int[] ansArray = new int[]{ans1, ans2, ans3, ans4};
+                UserAnswer userAnswer = new UserAnswer();
+
+                for (int aa = 0; aa<4; aa++){
+                    userAnswer.setIDua(dbua.getUserAnswerCount());
+                    userAnswer.setUserId(singleToneClass.getUid());
+                    userAnswer.setQuizId(quiz_id);
+                    userAnswer.setQuestionId(queForFrag.get(aa).getIDa());
+                    userAnswer.setUserAnswer(ansArray[aa]);
+                    dbua.addUserAnswer(userAnswer);
+                }
+
+                //check if question is correct
                 String ra = "This is the correct answer!";
                 String wa = "This is incorrect answer!";
-                if (ques1.getQuestionRight() == ans1 &&
-                        ques2.getQuestionRight() == ans2 &&
-                        ques3.getQuestionRight() == ans3 &&
-                        ques4.getQuestionRight() == ans4)
+                if (queForFrag.get(0).getQuestionRight() == ans1 &&
+                        queForFrag.get(1).getQuestionRight() == ans2 &&
+                        queForFrag.get(2).getQuestionRight() == ans3 &&
+                        queForFrag.get(3).getQuestionRight() == ans4)
                     singleToneClassAns.setAns(ra);
                 else
                     singleToneClassAns.setAns(wa);
