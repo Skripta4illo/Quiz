@@ -40,9 +40,9 @@ public class SecondFragment extends Fragment {
         DatabaseUserHandler dbu = new DatabaseUserHandler(this.getContext());
         DatabaseUserAnswerHandler dbua = new DatabaseUserAnswerHandler(this.getContext());
 
-        String ansc = dbua.checkUserAndQuiz(2, 15)?"answered":"not answered";
+        //String ansc = dbua.checkUserAndQuiz(2, 15)?"answered":"not answered";
 
-        Toast.makeText(getActivity(), ansc, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), ansc, Toast.LENGTH_SHORT).show();
         super.onViewCreated(view, savedInstanceState);
         //get user id
         singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
@@ -74,9 +74,28 @@ public class SecondFragment extends Fragment {
 //                    dbua.deleteUserAnswer(dua);
 //                }
 
+                List<Quiz> aq = db.getAllQuizes();
+                Iterator<Quiz> iq = aq.iterator();
+                while (iq.hasNext()){
+                    Quiz nq = iq.next();
+                    if (dbua.checkUserAndQuiz(uid, nq.getID())){
+                        iq.remove();
+                    }
+                }
+
+                //what should we do if all questions is answered?
+                if (aq.size() == 0) {
+                    Toast.makeText(getActivity(), "You answered all questions - now you can answer them again in random order", Toast.LENGTH_SHORT).show();
+                    aq = db.getAllQuizes();
+                }
+
+
                 //get quiz id
-                long randomNum = (long) (Math.random() * db.getQuizCount()) + 1;
-                randomNum = 15; //test string
+                //long randomNum = (long) (Math.random() * db.getQuizCount()) + 1;
+                //randomNum = 15; //test string
+                int randomNumQ = (int) (Math.random() * aq.size());
+                Quiz randQuiz = aq.get(randomNumQ);
+                long randomNum = randQuiz.getID();
 
                 //set quiz id to global variable
                 singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
