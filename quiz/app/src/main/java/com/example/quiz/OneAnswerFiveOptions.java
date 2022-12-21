@@ -83,6 +83,9 @@ public class OneAnswerFiveOptions extends Fragment {
                             singleToneClassAns.setAns(queForFrag.get(aa).getQuestionName() + wa);;
                     }
                 }
+                NavHostFragment.findNavController(OneAnswerFiveOptions.this)
+                        .navigate(R.id.action_OneAnswerFiveOptions_to_SecondFragment);
+
 
             }
         });

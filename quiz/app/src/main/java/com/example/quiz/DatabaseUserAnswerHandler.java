@@ -77,6 +77,19 @@ public class DatabaseUserAnswerHandler extends SQLiteOpenHelper {
         return userAnswer;
     }
 
+    // code to get the single user answer
+    boolean checkUserAndQuiz(long uid, long qid) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_USERS_ANSWER, new String[] { KEY_ID, KEY_U_ID,
+                        KEY_QUIZ_ID, KEY_QUES_ID, KEY_U_A }, "(" + KEY_U_ID + "=?) AND (" + KEY_QUIZ_ID + "=?)",
+                new String[] { String.valueOf(uid), String.valueOf(qid)}, null, null, null, null);
+        if (cursor != null && (cursor.getCount() > 0))
+            return true;
+        else
+            return false;
+    }
+
     // code to get all user answers in a list view
     public List<UserAnswer> getAllUserAnswer() {
         List<UserAnswer> userAnswerList = new ArrayList<UserAnswer>();

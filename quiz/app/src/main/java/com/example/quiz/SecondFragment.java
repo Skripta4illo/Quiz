@@ -1,5 +1,7 @@
 package com.example.quiz;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,10 +9,15 @@ import android.view.ViewGroup;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.widget.Toast;
 
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.quiz.databinding.FragmentSecondBinding;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class SecondFragment extends Fragment {
 
@@ -31,6 +38,11 @@ public class SecondFragment extends Fragment {
 
         DatabaseHandler db = new DatabaseHandler(this.getContext());
         DatabaseUserHandler dbu = new DatabaseUserHandler(this.getContext());
+        DatabaseUserAnswerHandler dbua = new DatabaseUserAnswerHandler(this.getContext());
+
+        String ansc = dbua.checkUserAndQuiz(2, 15)?"answered":"not answered";
+
+        Toast.makeText(getActivity(), ansc, Toast.LENGTH_SHORT).show();
         super.onViewCreated(view, savedInstanceState);
         //get user id
         singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
@@ -54,9 +66,17 @@ public class SecondFragment extends Fragment {
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //remove all user answer
+//                List<UserAnswer> ua = dbua.getAllUserAnswer();
+//                for (UserAnswer dua : ua)
+//                {
+//                    dbua.deleteUserAnswer(dua);
+//                }
+
                 //get quiz id
-                int randomNum = (int) (Math.random() * db.getQuizCount()) + 1;
-                randomNum = 1; //test string
+                long randomNum = (long) (Math.random() * db.getQuizCount()) + 1;
+                randomNum = 15; //test string
 
                 //set quiz id to global variable
                 singleToneClass singleToneClass = com.example.quiz.singleToneClass.getInstance();
@@ -119,7 +139,8 @@ public class SecondFragment extends Fragment {
             }
         });
     }
-
+    
+    
     @Override
     public void onDestroyView() {
         super.onDestroyView();
